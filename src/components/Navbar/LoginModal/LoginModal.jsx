@@ -44,6 +44,7 @@ const LoginModal = (props) => {
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <h2 id="simple-modal-title">Login to your account</h2>
+      <p className="modal-subtitle">Enter login info</p>
       <p id="simple-modal-description">
         <Input
           value={email}

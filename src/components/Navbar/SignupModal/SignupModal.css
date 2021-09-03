@@ -18,6 +18,10 @@
   margin-left: 6px !important;
 }
 
+.makeStyles-paper-2 {
+  width: auto !important;
+}
+
 h2#simple-modal-title,
 p#simple-modal-description {
   justify-content: center;
@@ -26,4 +30,18 @@ p#simple-modal-description {
 p#simple-modal-description {
   flex-direction: column;
   width: auto;
+  margin: 20px 0;
+}
+
+h2#simple-modal-title {
+  margin-bottom: 10px;
+}
+
+.modal-subtitle {
+  margin: auto;
+  width: max-content;
+}
+
+.input-label {
+  margin: 0 5px;
 }

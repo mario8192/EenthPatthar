@@ -43,39 +43,58 @@ const SignupModal = (props) => {
     setFullName("");
     setEmail("");
     setPassword("");
+    setRePassword("");
   }, [signupModalOpen]);
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
       <h2 id="simple-modal-title">Create a new account</h2>
+      <p className="modal-subtitle">Enter your details</p>
       <p id="simple-modal-description">
-        <Input
-          value={FullName}
-          onChange={(e) => setFullName(e.target.value)}
-          placeholder="Enter full name"
-        />
-        <Input
-          value={Email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter your email id"
-        />
-        <Input
-          value={Phone}
-          onChange={(e) => setPhone(e.target.value)}
-          placeholder="Enter valid phone number..."
-        />
-        <Input
-          value={Password}
-          onChange={(e) => setPassword(e.target.value)}
-          type="Password"
-          placeholder="Enter a Password..."
-        />
-        <Input
-          value={RePassword}
-          onChange={(e) => setRePassword(e.target.value)}
-          type="Password"
-          placeholder="Retype your Password..."
-        />
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              paddingRight: "20px",
+            }}
+          >
+            <div className="input-label">Full name</div>
+            <Input
+              value={FullName}
+              onChange={(e) => setFullName(e.target.value)}
+              placeholder="Enter full name"
+            />
+            <div className="input-label">Email</div>
+            <Input
+              value={Email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email id"
+            />
+            <div className="input-label">Phone</div>
+            <Input
+              value={Phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="Enter valid phone number..."
+            />
+          </div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <div className="input-label">Password</div>
+            <Input
+              value={Password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="Password"
+              placeholder="Enter a Password..."
+            />
+            <div className="input-label">Confirm Password</div>
+            <Input
+              value={RePassword}
+              onChange={(e) => setRePassword(e.target.value)}
+              type="Password"
+              placeholder="Retype your Password..."
+            />
+          </div>
+        </div>
       </p>
       <Button
         onClick={() => {
