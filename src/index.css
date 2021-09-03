@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+@font-face {
+  font-family: "Righteous";
+  src: local("Righteous"), url(./fonts/Righteous-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto Condensed";
+  src: local("Roboto Condensed"),
+    url(./fonts/RobotoCondensed-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto Condensed Bold";
+  src: local("Roboto Condensed Bold"),
+    url(./fonts/RobotoCondensed-Bold.ttf) format("truetype");
+}

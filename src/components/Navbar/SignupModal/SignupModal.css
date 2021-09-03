@@ -1,0 +1,29 @@
+.MuiInputBase-root {
+  border: 2px solid rgba(92, 92, 92, 0.219);
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px 15px;
+  background-color: rgba(240, 240, 240, 0.694);
+}
+.MuiInput-underline::before,
+.MuiInput-underline::after {
+  visibility: hidden;
+}
+/* .MuiInput-underline:hover {
+  border-bottom: initial;
+} */
+
+.MuiButtonBase-root {
+  background-color: #eee !important;
+  margin-left: 6px !important;
+}
+
+h2#simple-modal-title,
+p#simple-modal-description {
+  justify-content: center;
+  display: flex;
+}
+p#simple-modal-description {
+  flex-direction: column;
+  width: auto;
+}

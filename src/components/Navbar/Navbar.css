@@ -1,0 +1,70 @@
+.navbar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  border: 2px solid rgb(235, 235, 235);
+  background-color: white;
+  z-index: 2;
+  font-family: "Roboto Condensed";
+}
+
+.navbar__container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.navbar__appname {
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+  margin: auto 0;
+  width: max-content;
+  /* display: block; */
+  padding: 10px 5px;
+  font-family: "Righteous";
+  font-size: 25px;
+}
+.navbar__brand__icon {
+  background-image: url("./brand.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 70px;
+}
+
+.userActions {
+  display: flex;
+  flex-direction: row;
+  margin: auto 10px auto auto;
+}
+
+.profile__name {
+  font-weight: bold;
+  margin: auto 2px;
+}
+
+.profile__image {
+  margin: auto 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(179, 179, 179, 0.473);
+  background-size: cover;
+  background-position: center;
+}
+
+.login__container {
+  display: flex;
+  flex-direction: row;
+}
+
+.login__button {
+  margin: auto 5px;
+  padding: 5px;
+}
+.login__button:hover {
+  cursor: pointer;
+}
