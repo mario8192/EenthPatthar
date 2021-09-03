@@ -33,12 +33,14 @@ const SignupModal = (props) => {
   const [modalStyle] = useState(getModalStyle);
   const { signupModalOpen, setSignupModalOpen, handleSignup } = props;
 
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [FullName, setFullName] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Phone, setPhone] = useState("");
+  const [Password, setPassword] = useState("");
+  const [RePassword, setRePassword] = useState("");
 
   useEffect(() => {
-    setUsername("");
+    setFullName("");
     setEmail("");
     setPassword("");
   }, [signupModalOpen]);
@@ -48,26 +50,37 @@ const SignupModal = (props) => {
       <h2 id="simple-modal-title">Create a new account</h2>
       <p id="simple-modal-description">
         <Input
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
+          value={FullName}
+          onChange={(e) => setFullName(e.target.value)}
+          placeholder="Enter full name"
         />
         <Input
-          value={email}
+          value={Email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
+          placeholder="Enter your email id"
         />
         <Input
-          value={password}
+          value={Phone}
+          onChange={(e) => setPhone(e.target.value)}
+          placeholder="Enter valid phone number..."
+        />
+        <Input
+          value={Password}
           onChange={(e) => setPassword(e.target.value)}
-          type="password"
-          placeholder="Password"
+          type="Password"
+          placeholder="Enter a Password..."
+        />
+        <Input
+          value={RePassword}
+          onChange={(e) => setRePassword(e.target.value)}
+          type="Password"
+          placeholder="Retype your Password..."
         />
       </p>
       <Button
         onClick={() => {
           setSignupModalOpen(false);
-          handleSignup();
+          handleSignup(FullName, Email, Phone, Password, RePassword);
         }}
       >
         Create
