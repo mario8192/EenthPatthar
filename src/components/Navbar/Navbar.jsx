@@ -2,15 +2,23 @@ import React, { Component, Fragment, useState } from "react";
 import LoginModal from "./LoginModal/LoginModal";
 import SignupModal from "./SignupModal/SignupModal";
 import profilePlaceholder from "./profile-placeholder.png";
+import axios from "axios";
 import "./Navbar.css";
 
 const Navbar = (props) => {
   const profileImage =
     "https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png";
-  const { user, logout, handleLogin, handleSignup } = props;
+  const {
+    user,
+    logout,
+    handleLogin,
+    handleSignup,
+    loginModalOpen,
+    setLoginModalOpen,
+    signupModalOpen,
+    setSignupModalOpen,
+  } = props;
 
-  const [loginModalOpen, setLoginModalOpen] = useState(false);
-  const [signupModalOpen, setSignupModalOpen] = useState(false);
   // const [];
 
   const loginClickAction = () => {
@@ -20,8 +28,13 @@ const Navbar = (props) => {
     setSignupModalOpen(true);
   };
 
+  const switchModal = () => {
+    setSignupModalOpen(!signupModalOpen);
+    setLoginModalOpen(!loginModalOpen);
+  };
+
   return (
-    <div className="navbar">
+    <div className="navbar__main">
       <div className="navbar__container">
         <div className="navbar__brand__icon" />
         <h2 className="navbar__appname">EenthPatthar.com</h2>
@@ -31,9 +44,9 @@ const Navbar = (props) => {
               <div className="login__button" onClick={loginClickAction}>
                 Login
               </div>
-              <div className="login__button" onClick={signupClickAction}>
+              {/* <div className="login__button" onClick={signupClickAction}>
                 Signup
-              </div>
+              </div> */}
             </Fragment>
           ) : (
             <Fragment>
@@ -54,11 +67,13 @@ const Navbar = (props) => {
             loginModalOpen={loginModalOpen}
             setLoginModalOpen={setLoginModalOpen}
             handleLogin={handleLogin}
+            switchModal={switchModal}
           />
           <SignupModal
             signupModalOpen={signupModalOpen}
             setSignupModalOpen={setSignupModalOpen}
             handleSignup={handleSignup}
+            switchModal={switchModal}
           />
         </div>
       </div>

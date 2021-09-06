@@ -19,7 +19,7 @@ function getModalStyle() {
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
-    width: 300,
+    width: 390,
     backgroundColor: theme.palette.background.paper,
     // border: "2px solid #000",
     borderRadius: "5px",
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 const LoginModal = (props) => {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
-  const { loginModalOpen, setLoginModalOpen, handleLogin } = props;
+  const { loginModalOpen, setLoginModalOpen, handleLogin, switchModal } = props;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,15 +58,24 @@ const LoginModal = (props) => {
           placeholder="Password"
         />
       </p>
-      <Button
-        onClick={() => {
-          setLoginModalOpen(false);
-          handleLogin(email, password);
-        }}
-      >
-        Login
-      </Button>
-      <LoginModal />
+      <div className="loginform__buttons__container">
+        <Button
+          onClick={() => {
+            switchModal();
+          }}
+        >
+          Signup Instead
+        </Button>
+        <Button
+          onClick={() => {
+            setLoginModalOpen(false);
+            handleLogin({ email: email, password: password });
+          }}
+        >
+          Login
+        </Button>
+      </div>
+      <LoginModal open={loginModalOpen} />
     </div>
   );
 

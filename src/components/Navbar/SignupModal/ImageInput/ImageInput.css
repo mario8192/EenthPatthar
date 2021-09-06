@@ -1,0 +1,10 @@
+.image__upload__label {
+  display: flex;
+  flex-direction: row;
+}
+
+.image__upload__preview {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}

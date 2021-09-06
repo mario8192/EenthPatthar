@@ -27,3 +27,13 @@ p#simple-modal-description {
   flex-direction: column;
   width: auto;
 }
+
+.loginform__buttons__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.loginform__buttons__container .MuiButton-root {
+  width: 150px;
+}

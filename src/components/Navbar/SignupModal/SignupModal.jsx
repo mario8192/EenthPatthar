@@ -4,6 +4,7 @@ import Modal from "@material-ui/core/Modal";
 import Input from "@material-ui/core/Input";
 import Button from "@material-ui/core/Button";
 import "./SignupModal.css";
+import ImageInput from "./ImageInput/ImageInput";
 
 function getModalStyle() {
   const top = 50;
@@ -31,19 +32,23 @@ const useStyles = makeStyles((theme) => ({
 const SignupModal = (props) => {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
-  const { signupModalOpen, setSignupModalOpen, handleSignup } = props;
+  const { signupModalOpen, setSignupModalOpen, handleSignup, switchModal } =
+    props;
 
   const [FullName, setFullName] = useState("");
   const [Email, setEmail] = useState("");
   const [Phone, setPhone] = useState("");
   const [Password, setPassword] = useState("");
   const [RePassword, setRePassword] = useState("");
+  const [ImageURL, setImageURL] = useState("");
 
   useEffect(() => {
     setFullName("");
     setEmail("");
+    setPhone("");
     setPassword("");
     setRePassword("");
+    setImageURL("https://avatars.githubusercontent.com/u/48586282?v=4");
   }, [signupModalOpen]);
 
   const body = (
@@ -63,13 +68,13 @@ const SignupModal = (props) => {
             <Input
               value={FullName}
               onChange={(e) => setFullName(e.target.value)}
-              placeholder="Enter full name"
+              placeholder="Enter full name..."
             />
             <div className="input-label">Email</div>
             <Input
               value={Email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email id"
+              placeholder="Enter your email ID..."
             />
             <div className="input-label">Phone</div>
             <Input
@@ -93,18 +98,36 @@ const SignupModal = (props) => {
               type="Password"
               placeholder="Retype your Password..."
             />
+            <ImageInput ImageURL />
           </div>
         </div>
       </p>
-      <Button
-        onClick={() => {
-          setSignupModalOpen(false);
-          handleSignup(FullName, Email, Phone, Password, RePassword);
-        }}
-      >
-        Create
-      </Button>
-      <SignupModal />
+      <div className="loginform__buttons__container">
+        <Button
+          onClick={() => {
+            switchModal();
+          }}
+        >
+          Login Instead
+        </Button>
+        <Button
+          onClick={() => {
+            setSignupModalOpen(false);
+            handleSignup({
+              fullname: FullName,
+              email: Email,
+              mobile: Phone,
+              password: Password,
+              role: "admin",
+              is_subscribed: false,
+            });
+          }}
+        >
+          Create
+        </Button>
+      </div>
+
+      <SignupModal open={signupModalOpen} />
     </div>
   );
 
