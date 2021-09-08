@@ -1,0 +1,30 @@
+{
+    "properties": [
+        {
+            "property_details": {
+                "property_title": "Ajmera I Land Zeon",
+                "property_type": "Flat",
+                "description": "Your search for the unsurpassed home will now to an end at Ajmera I Land Zeon. Pleasantly developed by Ajmera Realty and Infra India this project encompasses 240 units in a high-rise and well-planned tower. Further, Ajmera I Land Zeon Wadala price lie within the range of Rs. 2.75 Cr - 5.0 Cr.",
+                "n_bhk": 4
+            },
+            "address": {
+                "city": "Wadala, Mumbai",
+                "area_details": "Located close to the Lalbaugh Flyover, Wadala East is a low-density location in the Mumbai Harbor. It neighbors, some of the most promising residential locales in the city. With the availability of all the essential civic utilities, Wadala is a place to watch out for in the future."
+            },
+            "images": ["https://images.pexels.com/photos/1000985/pexels-photo-1000985.jpeg?cs=srgb&dl=pexels-david-jakab-1000985.jpg&fm=jpg"],
+            "_id": "e7139de0-1ddd-4b7b-8c4e-17043fc33738",
+            "quoted_price": 505000000,
+            "is_approved": false,
+            "interested": 0,
+            "author_details": {
+                "id": "2083894f-488b-4bd0-848d-9134a06a0388",
+                "fullname": "aditya limaye1",
+                "email": "aditya@limaye.com",
+                "role": "admin"
+            },
+            "createdAt": "2021-09-06T07:59:06.512Z",
+            "updatedAt": "2021-09-06T07:59:06.512Z",
+            "__v": 0
+        }
+    ]
+}

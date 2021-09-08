@@ -1,12 +1,16 @@
 import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Navbar from "./components/Navbar/Navbar";
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import history from "./services/History";
 import { tokenHeader } from "./services/HeaderService";
 import axios from "axios";
 import PropertyList from "./components/Buying/PropertyList/PropertyList";
 import PropertyDetail from "./components/Buying/PropertyDetail/PropertyDetail";
+import AdminPanel from "./components/Admin/AdminPropertyPanel/AdminPropertyPanel";
+import AdminUserPanel from "./components/Admin/AdminUserPanel/AdminUserPanel";
+import Contacted from "./components/UserView/Contacted/Contacted";
+import Offers from "./components/UserView/Offers/Offers";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -84,6 +88,22 @@ function App() {
           </Route>
           <Route path="/ad">
             <PropertyDetail setLoginModalOpen={setLoginModalOpen} />
+          </Route>
+          <Route path='/admin-properties'>
+            <AdminPanel 
+            user={user}
+            />
+          </Route>
+          <Route path='/admin-users'>
+            <AdminUserPanel 
+            user={user}
+            />
+          </Route>
+          <Route path='/contacted'>
+            <Contacted user={user}/>
+          </Route>
+          <Route path='/offers'>
+            <Offers />
           </Route>
         </Switch>
       </Router>

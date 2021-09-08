@@ -1,0 +1,13 @@
+{
+    "users": [
+        {
+            "_id": "8765jhk4",
+            "role": "buyer",
+            "fullname": "Anish Tatke",
+            "email": "anish.t@demo.com",
+            "password": "23984kjjh",
+            "contact_no": "9158886753",
+            "profile_picture": "https://images.pexels.com/photos/2811087/pexels-photo-2811087.jpeg?cs=srgb&dl=pexels-ali-pazani-2811087.jpg&fm=jpg"
+        }
+    ]
+}
