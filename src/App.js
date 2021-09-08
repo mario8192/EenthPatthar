@@ -6,6 +6,8 @@ import { tokenHeader } from "./services/HeaderService";
 import axios from "axios";
 import PropertyList from "./components/Buying/PropertyList/PropertyList";
 import PropertyDetail from "./components/Buying/PropertyDetail/PropertyDetail";
+import MyProfileCard from "./components/MyProfileCard/MyProfileCard";
+import AdForm from "./components/Adform/AdForm";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -45,13 +47,13 @@ function App() {
           <Route exact path="/ad">
             <PropertyDetail setLoginModalOpen={setLoginModalOpen} />
           </Route>
+          <Route path="/myprofile">
+            <MyProfileCard></MyProfileCard>
+          </Route>
+          <Route path="/adform">
+            <AdForm></AdForm>
+          </Route>
         </Switch>
-        {/* <Route path="/myprofile">
-          <MyProfileCard></MyProfileCard>
-        </Route>
-        <Route path="/adform">
-          <AdForm></AdForm>
-        </Route> */}
       </Router>
     </div>
   );
