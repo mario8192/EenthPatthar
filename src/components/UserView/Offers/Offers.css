@@ -6,22 +6,146 @@
 
 .advert-list {
     width: 25%;
-    height: 100%;
+    height: 1px;
     border-right: 1px solid gray;
+}
+
+.advert-name {
+    text-align: left;
+    padding-left: 25px;
+    width: 72%;
+}
+
+.advert-name strong {
+    font-size: x-large;
 }
 
 .interested-users {
     width: 25%;
     height: 100%;
-    border-right: 1px solid gray;
 }
 
-.buyer-chat {
+.buyer-contact {
     height: 100%;
     width: 50%;
+    border-left: 1px solid gainsboro;
+}
+
+.buyer-section{
+    padding: 15px;
 }
 
 .advert-item {
     display: flex;
     border-bottom: 1px solid grey;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px grey;
+    margin-bottom: 5px;
+}
+
+.buyer-item {
+    display: flex;
+    border-bottom: 1px solid gray;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px grey;
+    margin-bottom: 5px;
+}
+
+.buyer-item img {
+    padding: 12px;
+}
+
+.buyer-intro {
+    width: 65%;
+    margin-left: 20px;
+    padding: 10px;
+}
+
+.buyer-item p {
+    margin: 0%;
+}
+
+.buyer-intro strong {
+    font-size: x-large;
+}
+
+.buyer-item p {
+    margin: 0%;
+}
+
+h2.column-heading {
+    text-align: center;
+    margin: 0%;
+    border: 1px solid gainsboro;
+    padding: 10px;
+}
+
+.buyer-header {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.buyer-header h2 {
+    margin: 0%;
+    margin-top: 5px;
+}
+
+.buyer-header img {
+    border-radius: 50%;
+}
+
+.buyer-header p {
+    margin: 0%;
+    margin-top: 5px;
+}
+
+.chat-text {
+    text-align: center;
+    margin: 0%;
+    border: 1px solid grey;
+    width: fit-content;
+    border-radius: 12px;
+    box-shadow: 2px 2px 2px grey;
+}
+
+.chat-text p {
+    margin: 0%;
+    padding: 5px;
+}
+
+.chatbox {
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding-right: 15px;
+}
+
+.chat-property {
+    border: 1px solid grey;
+    border-radius: 10px;
+    text-align: start;
+    width: 270px;
+    height: 200px;
+    margin-top: 10px;
+    box-shadow: 2px 2px 3px grey;
+}
+
+.chat-property h1 {
+    margin: 0%;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.chat-property p {
+    margin: 0%;
+    padding: 6px 0px 0px 0px;
+    margin-left: 15px;
+}
+
+.chat-property img {
+    width: 236px;
+    padding: 3%;
+    height: 104px;
+    margin-left: 8px;
 }

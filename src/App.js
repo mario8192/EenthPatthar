@@ -63,7 +63,7 @@ function App() {
             />
           </Route> : null}
           <Route path='/contacted'>
-            <Contacted user={user}/>
+            {user &&<Contacted user={user}/>}
           </Route>
           <Route path='/offers'>
             <Offers user={user}/>

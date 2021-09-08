@@ -5,8 +5,8 @@ import useFetch from '../../../services/useFetch'
 import AdminPropertyCard from './AdminPropertyCard/AdminPropertyCard'
 
 function AdminPanel({user}) {
-    const url = process.env.REACT_APP_DEV_URL + "advertisements"
-    const { data: advertisements, isPending } = useFetch("http://841b-2405-201-1b-3826-1c0a-5a65-6566-25bc.ngrok.io/advertisements")
+    const url = process.env.REACT_APP_SERVER_URL + "/advertisements"
+    const { data: advertisements, isPending } = useFetch(process.env.REACT_APP_SERVER_URL + "/advertisements")
 
     return (
         <div className="admin-property-panel">

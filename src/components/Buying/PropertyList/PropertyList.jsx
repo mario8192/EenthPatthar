@@ -73,7 +73,7 @@ export default function PropertyList() {
                   val.type.toLowerCase().includes(Search.toLowerCase())
                 ) {
                   return val;
-                } else if (val.bhk == Search) {
+                } else if (val.bhk === Search) {
                   return val;
                 } else if (
                   val.city.toLowerCase().includes(Search.toLowerCase())

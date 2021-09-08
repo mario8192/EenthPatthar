@@ -4,7 +4,7 @@ import AdminUserCard from './AdminUserCard/AdminUserCard'
 import '../AdminUserPanel/AdminUserPanel.css'
 
 function AdminUserPanel({user}) {
-    const { data: users, isPending } = useFetch("http://841b-2405-201-1b-3826-1c0a-5a65-6566-25bc.ngrok.io/users")
+    const { data: users, isPending } = useFetch(process.env.REACT_APP_SERVER_URL + "/users")
     return (
         <div className="admin-user-panel">
             <h1>View/Edit All Users</h1>

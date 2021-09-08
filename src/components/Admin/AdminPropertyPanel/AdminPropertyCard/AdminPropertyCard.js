@@ -3,19 +3,16 @@ import { AiOutlineEye, AiFillEye, AiOutlineDelete } from 'react-icons/ai'
 import { RiCheckboxCircleLine, RiCheckboxCircleFill } from 'react-icons/ri'
 import { ImLocation2 } from 'react-icons/im'
 import '../AdminPropertyCard/AdminPropertyCard.css'
+import { tokenHeader } from '../../../../services/HeaderService'
 
 function AdminPropertyCard({prop}) {
     const [property, setProperty] = useState(prop)
     const [isApproved, setIsApproved] = useState(property.is_approved)
 
     const approvalHandler = () => {
-        fetch("http://841b-2405-201-1b-3826-1c0a-5a65-6566-25bc.ngrok.io/approve?id=" + property._id, {
+        fetch( process.env.REACT_APP_SERVER_URL + "/approve?id=" + property._id + "&approval=" + !isApproved, {
             method: "PUT",
-            headers: {
-                "Accept": "appication/json",
-                "Content-Type": "application.json",
-                "x-access-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI5OThkZTVjMy03M2I3LTQ0MzMtYWQ4YS1lNzRlNGMxNTI4ZmUiLCJlbWFpbCI6ImFuaXNoLnRAZGVtby5jb20iLCJpYXQiOjE2MzA5OTcwMTgsImV4cCI6MTYzMTAwMDYxOH0.aqXPvI1WooXk3eXTKYNU8GFZEdHsiYWY3kCaDrSPaHY"
-            }
+            headers: tokenHeader()
         }).then(res => {
             setIsApproved(!isApproved)
             console.log(res)
@@ -23,15 +20,11 @@ function AdminPropertyCard({prop}) {
     }
 
     const deleteHandler = () => {
-        const deleteURL = "http://841b-2405-201-1b-3826-1c0a-5a65-6566-25bc.ngrok.io/deleteadvertisement?id="+property._id
+        const deleteURL = process.env.REACT_APP_SERVER_URL + "deleteadvertisement?id=" + property._id
         console.log(deleteURL)
         fetch(deleteURL, {
             method: "DELETE",
-            headers: {
-                'Accept': "application/json",
-                'Content-Type': "application/json",
-                'x-access-token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI5OThkZTVjMy03M2I3LTQ0MzMtYWQ4YS1lNzRlNGMxNTI4ZmUiLCJlbWFpbCI6ImFuaXNoLnRAZGVtby5jb20iLCJpYXQiOjE2MzA5OTcwMTgsImV4cCI6MTYzMTAwMDYxOH0.aqXPvI1WooXk3eXTKYNU8GFZEdHsiYWY3kCaDrSPaHY"
-            }
+            headers: tokenHeader()
         })
         .then(res => {
             console.log(res)
@@ -40,7 +33,7 @@ function AdminPropertyCard({prop}) {
     }
 
     const viewProperty = () => {
-
+        
     }
 
     return (

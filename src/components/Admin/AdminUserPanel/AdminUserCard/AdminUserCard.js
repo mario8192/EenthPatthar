@@ -1,6 +1,7 @@
 import React from 'react'
 import { AiFillEye, AiOutlineDelete } from 'react-icons/ai'
 import { ImWindows } from 'react-icons/im'
+import { tokenHeader } from '../../../../services/HeaderService'
 import '../AdminUserCard/AdminUserCard.css'
 
 function AdminUserCard({user}) {
@@ -10,15 +11,11 @@ function AdminUserCard({user}) {
     }
 
     const deleteHandler = () => {
-        const deleteURL = "http://841b-2405-201-1b-3826-1c0a-5a65-6566-25bc.ngrok.io/user?id=" + user._id
+        const deleteURL = process.env.REACT_APP_SERVER_URL + "user?id=" + user._id
         console.log(deleteURL)
         fetch(deleteURL, {
             method: "DELETE",
-            headers: {
-                'Accept': "application/json",
-                'Content-Type': "application/json",
-                'x-access-token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI5OThkZTVjMy03M2I3LTQ0MzMtYWQ4YS1lNzRlNGMxNTI4ZmUiLCJlbWFpbCI6ImFuaXNoLnRAZGVtby5jb20iLCJpYXQiOjE2MzA5OTcwMTgsImV4cCI6MTYzMTAwMDYxOH0.aqXPvI1WooXk3eXTKYNU8GFZEdHsiYWY3kCaDrSPaHY"
-            }
+            headers: tokenHeader()
         })
         .then(res => {
             console.log(res)
