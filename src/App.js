@@ -11,13 +11,13 @@ import AdminPanel from "./components/Admin/AdminPropertyPanel/AdminPropertyPanel
 import AdminUserPanel from "./components/Admin/AdminUserPanel/AdminUserPanel";
 import Contacted from "./components/UserView/Contacted/Contacted";
 import Offers from "./components/UserView/Offers/Offers";
+import MyProfileCard from './components/MyProfileCard/MyProfileCard';
+import AdForm from "./components/Adform/AdForm";
 
 function App() {
   const [user, setUser] = useState(null);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [signupModalOpen, setSignupModalOpen] = useState(false);
-  const token = localStorage.getItem("token");
-
   useEffect(() => {
     if (localStorage.getItem("token")) {
       const data = axios({
@@ -34,78 +34,55 @@ function App() {
     } else setUser(null);
   }, []);
 
-  const logout = () => {
-    //logout logic goes here
-    localStorage.removeItem("token");
-    // history.push("/");
-    window.location.reload();
-  };
-
-  const handleLogin = (data) => {
-    console.log("logging in");
-    //login logic goes here
-    axios
-      .post(process.env.REACT_APP_SERVER_URL + "/login", data)
-      .then((res) => {
-        console.log(res);
-        localStorage.setItem("token", res.data.token);
-        setUser(res.data);
-      })
-      .catch((err) => {
-        alert(err);
-      });
-  };
-
-  const handleSignup = (data) => {
-    console.log("signing up");
-    //signup logic goes here
-    axios
-      .post(process.env.REACT_APP_SERVER_URL + "/register", data)
-      .then((res) => {
-        console.log(res);
-      })
-      .err((err) => {
-        alert(err);
-      });
-  };
-
   return (
     <div className="App">
-      <Navbar
-        user={user}
-        handleLogin={handleLogin}
-        handleSignup={handleSignup}
-        logout={logout}
-        loginModalOpen={loginModalOpen}
-        setLoginModalOpen={setLoginModalOpen}
-        signupModalOpen={signupModalOpen}
-        setSignupModalOpen={setSignupModalOpen}
-      />
       <Router>
+        <Navbar
+          user={user}
+          loginModalOpen={loginModalOpen}
+          setLoginModalOpen={setLoginModalOpen}
+          signupModalOpen={signupModalOpen}
+          setSignupModalOpen={setSignupModalOpen}
+        />
         <Switch>
           <Route exact path="/">
             <PropertyList />
           </Route>
-          <Route path="/ad">
+          <Route exact path="/ad">
             <PropertyDetail setLoginModalOpen={setLoginModalOpen} />
           </Route>
-          <Route path='/admin-properties'>
+
+          {user.role === 'admin' ? <Route path='/admin-properties'>
             <AdminPanel 
             user={user}
             />
-          </Route>
-          <Route path='/admin-users'>
+          </Route> : null}
+          {user.role === 'admin' ? <Route path='/admin-users'>
             <AdminUserPanel 
             user={user}
             />
-          </Route>
+          </Route> : null}
           <Route path='/contacted'>
             <Contacted user={user}/>
           </Route>
           <Route path='/offers'>
-            <Offers />
+            <Offers user={user}/>
+          </Route>
+          <Route path="/myprofile">
+            <MyProfileCard></MyProfileCard>
+          </Route>
+          <Route path="/adform">
+            <AdForm></AdForm>
           </Route>
         </Switch>
+
+        {/* <Route path="/myprofile">
+          <MyProfileCard></MyProfileCard>
+        </Route>
+        <Route path="/adform">
+          <AdForm></AdForm>
+        </Route> */}
+
       </Router>
     </div>
   );

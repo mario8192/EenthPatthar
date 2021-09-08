@@ -1,10 +1,24 @@
 .image__upload__label {
-  display: flex;
-  flex-direction: row;
+  margin-top: 10px;
+  height: max-content;
 }
 
 .image__upload__preview {
-  height: 50px;
-  width: 50px;
+  display: flex;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
+  margin: 10px auto;
+  overflow: hidden;
+}
+.image__upload__elem {
+  height: inherit;
+  width: auto;
+  margin: auto;
+}
+
+.image-input-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }

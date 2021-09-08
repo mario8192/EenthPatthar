@@ -22,26 +22,15 @@
   width: auto !important;
 }
 
-h2#simple-modal-title,
-p#simple-modal-description {
-  justify-content: center;
-  display: flex;
-}
-p#simple-modal-description {
-  flex-direction: column;
-  width: auto;
-  margin: 20px 0;
-}
-
 h2#simple-modal-title {
   margin-bottom: 10px;
 }
 
 .modal-subtitle {
-  margin: auto;
   width: max-content;
+  margin: auto;
 }
 
 .input-label {
-  margin: 0 5px;
+  margin: auto 5px;
 }
