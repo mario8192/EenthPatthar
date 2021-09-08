@@ -52,7 +52,8 @@ export default function MyProfileCard() {
                     'approve': ad.is_approved,
                     'type':ad.property_details.property_type,
                     'bhk':ad.property_details.n_bhk,
-                    'desc':ad.property_details.description
+                    'desc':ad.property_details.description,
+                    'images':ad.images[0]
                 }
             })
             setmyAds(ads)
@@ -80,7 +81,7 @@ export default function MyProfileCard() {
         }
     }
 
-    const updateHandler = async(e, p_id, p_title, p_type, p_desc, p_bhk, p_area, p_city, p_price) => {
+    const updateHandler = async(e, p_id, p_title, p_type, p_desc, p_bhk, p_area, p_city, p_price, p_images) => {
         e.preventDefault()
         history.push({
             pathname:"/adform",
@@ -92,7 +93,8 @@ export default function MyProfileCard() {
                 p_bhk,
                 p_area,
                 p_city,
-                p_price
+                p_price,
+                p_images
             }
         })
     }
@@ -160,7 +162,7 @@ export default function MyProfileCard() {
                                                                 <button className="btn btn-outline-dark" onClick={(e) => deleteHandler(e, val.id)}><i className="fa fa-trash" aria-hidden="true"></i></button>
                                                                 <br/>
                                                                 <br/>
-                                                                <button className = "btn btn-outline-dark" onClick = {(e) => updateHandler(e,val.id, val.title, val.type, val.desc, val.bhk, val.area, val.city, val.price)}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                                <button className = "btn btn-outline-dark" onClick = {(e) => updateHandler(e,val.id, val.title, val.type, val.desc, val.bhk, val.area, val.city, val.price, val.images)}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></button>
                                                             </div>
                                                         </div>
                                                     </div>

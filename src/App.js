@@ -1,7 +1,7 @@
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { tokenHeader } from "./services/HeaderService";
 import axios from "axios";
 import PropertyList from "./components/Buying/PropertyList/PropertyList";
@@ -29,48 +29,11 @@ function App() {
     } else setUser(null);
   }, []);
 
-  const logout = () => {
-    //logout logic goes here
-    localStorage.removeItem("token");
-    window.location.reload();
-  };
-
-  const handleLogin = (data) => {
-    console.log("logging in");
-    //login logic goes here
-    axios
-      .post(process.env.REACT_APP_SERVER_URL + "/login", data)
-      .then((res) => {
-        console.log(res);
-        localStorage.setItem("token", res.data.token);
-        setUser(res.data);
-      })
-      .catch((err) => {
-        alert(err);
-      });
-  };
-
-  const handleSignup = (data) => {
-    console.log("signing up");
-    //signup logic goes here
-    axios
-      .post(process.env.REACT_APP_SERVER_URL + "/register", data)
-      .then((res) => {
-        console.log(res);
-      })
-      .err((err) => {
-        alert(err);
-      });
-  };
-
   return (
     <div className="App">
       <Router>
         <Navbar
           user={user}
-          handleLogin={handleLogin}
-          handleSignup={handleSignup}
-          logout={logout}
           loginModalOpen={loginModalOpen}
           setLoginModalOpen={setLoginModalOpen}
           signupModalOpen={signupModalOpen}
@@ -80,7 +43,7 @@ function App() {
           <Route exact path="/">
             <PropertyList />
           </Route>
-          <Route path="/ad">
+          <Route exact path="/ad">
             <PropertyDetail setLoginModalOpen={setLoginModalOpen} />
           </Route>
           <Route path="/myprofile">
@@ -90,6 +53,12 @@ function App() {
             <AdForm></AdForm>
           </Route>
         </Switch>
+        {/* <Route path="/myprofile">
+          <MyProfileCard></MyProfileCard>
+        </Route>
+        <Route path="/adform">
+          <AdForm></AdForm>
+        </Route> */}
       </Router>
     </div>
   );

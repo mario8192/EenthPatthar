@@ -4,21 +4,20 @@ import SignupModal from "./SignupModal/SignupModal";
 import profilePlaceholder from "./profile-placeholder.png";
 import { Link } from 'react-router-dom';
 import "./Navbar.css";
+import logout from "../../services/LogoutService";
+import handleLogin from "../../services/LoginService";
+import handleSignup from "../../services/SignupService";
 
 const Navbar = (props) => {
   const profileImage =
     "https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png";
   const {
     user,
-    logout,
-    handleLogin,
-    handleSignup,
     loginModalOpen,
     setLoginModalOpen,
     signupModalOpen,
     setSignupModalOpen,
   } = props;
-  // const [];
 
   const loginClickAction = () => {
     setLoginModalOpen(true);
@@ -36,7 +35,7 @@ const Navbar = (props) => {
     <div className="navbar__main">
       <div className="navbar__container">
         <div className="navbar__brand__icon" />
-        <Link to = "/" style = {{textDecoration:"none", color:"black"}}>
+        <Link>
           <h2 className="navbar__appname">EenthPatthar.com</h2>
         </Link>
         <div className="userActions">
@@ -51,13 +50,13 @@ const Navbar = (props) => {
             </Fragment>
           ) : (
             <Fragment>
-              <Link to = "/myprofile">
-                <button
+              <Link to="/myprofile">
+                <div
                   className="profile__image"
                   style={{
-                    backgroundImage: "url(" + profileImage + ")", textDecoration:"none"
+                    backgroundImage: "url(" + profileImage + ")",
                   }}
-                ></button>
+                ></div>
               </Link>
               <div className="profile__name">{user.displayName}</div>
               <Link to = "/" style = {{textDecoration:"none"}}>
