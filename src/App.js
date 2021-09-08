@@ -1,19 +1,18 @@
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import history from "./services/History";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import { tokenHeader } from "./services/HeaderService";
 import axios from "axios";
 import PropertyList from "./components/Buying/PropertyList/PropertyList";
 import PropertyDetail from "./components/Buying/PropertyDetail/PropertyDetail";
+import MyProfileCard from './components/MyProfileCard/MyProfileCard';
+import AdForm from "./components/Adform/AdForm";
 
 function App() {
   const [user, setUser] = useState(null);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [signupModalOpen, setSignupModalOpen] = useState(false);
-  const token = localStorage.getItem("token");
-
   useEffect(() => {
     if (localStorage.getItem("token")) {
       const data = axios({
@@ -33,7 +32,6 @@ function App() {
   const logout = () => {
     //logout logic goes here
     localStorage.removeItem("token");
-    // history.push("/");
     window.location.reload();
   };
 
@@ -67,23 +65,29 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar
-        user={user}
-        handleLogin={handleLogin}
-        handleSignup={handleSignup}
-        logout={logout}
-        loginModalOpen={loginModalOpen}
-        setLoginModalOpen={setLoginModalOpen}
-        signupModalOpen={signupModalOpen}
-        setSignupModalOpen={setSignupModalOpen}
-      />
       <Router>
+        <Navbar
+          user={user}
+          handleLogin={handleLogin}
+          handleSignup={handleSignup}
+          logout={logout}
+          loginModalOpen={loginModalOpen}
+          setLoginModalOpen={setLoginModalOpen}
+          signupModalOpen={signupModalOpen}
+          setSignupModalOpen={setSignupModalOpen}
+        />
         <Switch>
           <Route exact path="/">
             <PropertyList />
           </Route>
           <Route path="/ad">
             <PropertyDetail setLoginModalOpen={setLoginModalOpen} />
+          </Route>
+          <Route path="/myprofile">
+            <MyProfileCard></MyProfileCard>
+          </Route>
+          <Route path="/adform">
+            <AdForm></AdForm>
           </Route>
         </Switch>
       </Router>

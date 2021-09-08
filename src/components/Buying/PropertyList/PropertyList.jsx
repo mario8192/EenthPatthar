@@ -38,9 +38,11 @@ export default function PropertyList() {
             area: ad.address.area_details,
             city: ad.address.city,
             type: ad.property_details.property_type,
+            approved: ad.is_approved
           };
         });
         setAds(ads);
+        console.log(ads)
       } catch (err) {
         alert(err.message);
       }
@@ -79,8 +81,10 @@ export default function PropertyList() {
                   return val;
                 }
               }).map((ourAds) => {
-                return (
+                return(
                   <div className="mt-3" key={ourAds.id}>
+                    {
+                      ourAds.approved == true ?
                     <div
                       className="card"
                       style={{ width: "800px", borderRadius: "10px" }}
@@ -113,11 +117,7 @@ export default function PropertyList() {
                                 </div>
                               </div>
                               <div className="card-subtitle mb-2">
-                                <i
-                                  className="fa fa-map-marker"
-                                  aria-hidden="true"
-                                ></i>{" "}
-                                {ourAds.area}, {ourAds.city}
+                                <i className="fa fa-map-marker" aria-hidden="true"></i> {ourAds.area}, {ourAds.city}
                               </div>
                               <div className="card-text">{ourAds.desc}</div>
                               <div className="row">
@@ -145,8 +145,11 @@ export default function PropertyList() {
                         </div>
                       </Link>
                     </div>
+                    :
+                    <div></div>
+                      }
                   </div>
-                );
+                )
               })}
           </div>
         </div>

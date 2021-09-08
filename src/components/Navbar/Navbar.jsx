@@ -1,8 +1,8 @@
-import React, { Component, Fragment, useState } from "react";
+import React, { Component, Fragment } from "react";
 import LoginModal from "./LoginModal/LoginModal";
 import SignupModal from "./SignupModal/SignupModal";
 import profilePlaceholder from "./profile-placeholder.png";
-import axios from "axios";
+import { Link } from 'react-router-dom';
 import "./Navbar.css";
 
 const Navbar = (props) => {
@@ -18,7 +18,6 @@ const Navbar = (props) => {
     signupModalOpen,
     setSignupModalOpen,
   } = props;
-
   // const [];
 
   const loginClickAction = () => {
@@ -37,7 +36,9 @@ const Navbar = (props) => {
     <div className="navbar__main">
       <div className="navbar__container">
         <div className="navbar__brand__icon" />
-        <h2 className="navbar__appname">EenthPatthar.com</h2>
+        <Link to = "/" style = {{textDecoration:"none", color:"black"}}>
+          <h2 className="navbar__appname">EenthPatthar.com</h2>
+        </Link>
         <div className="userActions">
           {!user ? (
             <Fragment>
@@ -50,16 +51,20 @@ const Navbar = (props) => {
             </Fragment>
           ) : (
             <Fragment>
-              <div
-                className="profile__image"
-                style={{
-                  backgroundImage: "url(" + profileImage + ")",
-                }}
-              ></div>
+              <Link to = "/myprofile">
+                <button
+                  className="profile__image"
+                  style={{
+                    backgroundImage: "url(" + profileImage + ")", textDecoration:"none"
+                  }}
+                ></button>
+              </Link>
               <div className="profile__name">{user.displayName}</div>
+              <Link to = "/" style = {{textDecoration:"none"}}>
               <div className="login__button" onClick={logout}>
                 Logout
               </div>
+              </Link>
             </Fragment>
           )}
 
