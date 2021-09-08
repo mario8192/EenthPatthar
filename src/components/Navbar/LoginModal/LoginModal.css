@@ -19,13 +19,14 @@
 }
 
 h2#simple-modal-title,
-p#simple-modal-description {
+div#simple-modal-description {
   justify-content: center;
   display: flex;
 }
-p#simple-modal-description {
+div#simple-modal-description {
   flex-direction: column;
   width: auto;
+  margin: 15px auto;
 }
 
 .loginform__buttons__container {

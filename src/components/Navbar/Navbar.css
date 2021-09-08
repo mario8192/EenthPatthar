@@ -26,6 +26,11 @@
   padding: 10px 5px;
   font-family: "Righteous";
   font-size: 25px;
+  color: black;
+  text-decoration: none;
+}
+.navbar__appname:hover {
+  text-decoration: none;
 }
 .navbar__brand__icon {
   background-image: url("./brand.jpg");

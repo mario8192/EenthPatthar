@@ -45,7 +45,7 @@ const LoginModal = (props) => {
     <div style={modalStyle} className={classes.paper}>
       <h2 id="simple-modal-title">Login to your account</h2>
       <p className="modal-subtitle">Enter login info</p>
-      <p id="simple-modal-description">
+      <div id="simple-modal-description">
         <Input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -57,7 +57,7 @@ const LoginModal = (props) => {
           type="password"
           placeholder="Password"
         />
-      </p>
+      </div>
       <div className="loginform__buttons__container">
         <Button
           onClick={() => {
@@ -75,7 +75,7 @@ const LoginModal = (props) => {
           Login
         </Button>
       </div>
-      <LoginModal open={loginModalOpen} />
+      <LoginModal />
     </div>
   );
 
