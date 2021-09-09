@@ -1,0 +1,11 @@
+.post__ad__form .image__upload__preview {
+  width: 300px;
+  height: 140px;
+  margin: 10px 60px;
+  border-radius: 10px;
+}
+
+.post__ad__form .image__upload__elem {
+  width: inherit;
+  height: auto;
+}

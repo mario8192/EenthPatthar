@@ -13,7 +13,6 @@ function App() {
   const [user, setUser] = useState(null);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [signupModalOpen, setSignupModalOpen] = useState(false);
-
   useEffect(() => {
     if (localStorage.getItem("token")) {
       const data = axios({
@@ -48,7 +47,7 @@ function App() {
             <PropertyDetail setLoginModalOpen={setLoginModalOpen} />
           </Route>
           <Route path="/myprofile">
-            <MyProfileCard></MyProfileCard>
+            <MyProfileCard user={user}></MyProfileCard>
           </Route>
           <Route path="/adform">
             <AdForm></AdForm>

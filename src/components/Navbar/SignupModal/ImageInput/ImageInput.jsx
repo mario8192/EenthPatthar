@@ -25,8 +25,15 @@ const ImageInput = (props) => {
         <Button component="span">Upload</Button>
       </label>
       <div className="image__upload__preview">
+        {console.log(typeof Image == typeof "")}
         <img
-          src={Image ? URL.createObjectURL(Image) : placeholder}
+          src={
+            Image
+              ? typeof Image == typeof ""
+                ? Image
+                : URL.createObjectURL(Image)
+              : placeholder
+          }
           alt=""
           className="image__upload__elem"
         />

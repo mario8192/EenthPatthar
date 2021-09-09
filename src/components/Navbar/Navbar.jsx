@@ -35,7 +35,7 @@ const Navbar = (props) => {
     <div className="navbar__main">
       <div className="navbar__container">
         <div className="navbar__brand__icon" />
-        <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+        <Link to="/">
           <h2 className="navbar__appname">EenthPatthar.com</h2>
         </Link>
         <div className="userActions">
@@ -50,21 +50,18 @@ const Navbar = (props) => {
             </Fragment>
           ) : (
             <Fragment>
-              <Link to="/myprofile">
-                <button
+              <Link to="/myprofile" className="userActions">
+                <div
                   className="profile__image"
                   style={{
-                    backgroundImage: "url(" + profileImage + ")",
-                    textDecoration: "none",
+                    backgroundImage: "url(" + user.profile_picture + ")",
                   }}
-                ></button>
+                ></div>
+                <div className="profile__name">{user.email}</div>
               </Link>
-              <div className="profile__name">{user.displayName}</div>
-              <Link to="/" style={{ textDecoration: "none" }}>
-                <div className="login__button" onClick={logout}>
-                  Logout
-                </div>
-              </Link>
+              <div className="login__button" onClick={logout}>
+                Logout
+              </div>
             </Fragment>
           )}
 

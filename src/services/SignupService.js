@@ -8,6 +8,7 @@ const handleSignup = (data) => {
     .post(process.env.REACT_APP_SERVER_URL + "/register", data)
     .then((res) => {
       console.log(res);
+      alert(res.data.message)
     })
     .catch((err) => {
       alert(err);

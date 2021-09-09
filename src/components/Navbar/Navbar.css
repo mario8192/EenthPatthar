@@ -44,6 +44,8 @@
   display: flex;
   flex-direction: row;
   margin: auto 10px auto auto;
+  text-decoration: "none";
+  color: inherit;
 }
 
 .profile__name {
