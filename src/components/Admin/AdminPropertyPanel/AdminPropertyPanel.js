@@ -18,6 +18,7 @@ function AdminPanel({ user }) {
   };
 
   return (
+    <div>
     <div className="admin-property-panel">
       <h1>Approve Advertisements</h1>
       <div className="admin-functions">
@@ -65,6 +66,7 @@ function AdminPanel({ user }) {
             ))}
         </div>
       )}
+    </div>
     </div>
   );
 }

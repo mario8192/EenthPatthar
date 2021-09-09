@@ -27,10 +27,11 @@
   font-family: "Righteous";
   font-size: 25px;
   color: black;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 .navbar__appname:hover {
-  text-decoration: none;
+  text-decoration: none !important;
+  text-decoration-color: transparent
 }
 .navbar__brand__icon {
   background-image: url("./brand.jpg");

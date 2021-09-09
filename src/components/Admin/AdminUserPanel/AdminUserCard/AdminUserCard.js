@@ -31,7 +31,7 @@ function AdminUserCard({ user }) {
   };
 
   return (
-    <div className="admin-user-card">
+    <div className="admin-user-card mt-3">
       <img src={user.profile_picture} alt="profile_picture"></img>
       <div className="user-details">
         <h2>{user.fullname}</h2>

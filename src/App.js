@@ -7,13 +7,12 @@ import { tokenHeader } from "./services/HeaderService";
 import axios from "axios";
 import PropertyList from "./components/Buying/PropertyList/PropertyList";
 import PropertyDetail from "./components/Buying/PropertyDetail/PropertyDetail";
-import AdminPanel from "./components/Admin/AdminPropertyPanel/AdminPropertyPanel";
-import AdminUserPanel from "./components/Admin/AdminUserPanel/AdminUserPanel";
 import Contacted from "./components/UserView/Contacted/Contacted";
 import Offers from "./components/UserView/Offers/Offers";
 import MyProfileCard from "./components/MyProfileCard/MyProfileCard";
 import AdForm from "./components/Adform/AdForm";
 import UserPage from "./components/UserView/UserPage/UserPage";
+import Admin_main from "./components/Admin/Admin_main";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -52,7 +51,14 @@ function App() {
           <Route exact path="/ad">
             <PropertyDetail setLoginModalOpen={setLoginModalOpen} />
           </Route>
-          {user && <Route path='/admin-properties'>
+          { user && <Route path = "/admin_main">
+              {user.role === 'admin' ? 
+              <Admin_main user = {user}></Admin_main> :
+              <div>
+                <h2>Admin Access Needed</h2>
+              </div>}
+            </Route>}
+          {/* {user && <Route path='/admin-properties'>
             {user.role === 'admin' ? <AdminPanel 
             user={user}
             /> : <div><h2>Admin Access Needed</h2></div>}
@@ -61,7 +67,7 @@ function App() {
             {user.role === 'admin' ? <AdminUserPanel 
             user={user}
             /> : <div><h2>Admin Access Needed</h2></div>}
-          </Route>}
+          </Route>} */}
           <Route path='/contacted'>
             {user &&<Contacted user={user}/>}
           </Route>
