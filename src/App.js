@@ -13,6 +13,7 @@ import Contacted from "./components/UserView/Contacted/Contacted";
 import Offers from "./components/UserView/Offers/Offers";
 import MyProfileCard from "./components/MyProfileCard/MyProfileCard";
 import AdForm from "./components/Adform/AdForm";
+import UserPage from "./components/UserView/UserPage/UserPage";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -51,20 +52,24 @@ function App() {
           <Route exact path="/ad">
             <PropertyDetail setLoginModalOpen={setLoginModalOpen} />
           </Route>
-
-          {user && user.role === "admin" ? (
-            <Route path="/admin-properties">
-              <AdminPanel user={user} />
-            </Route>
-          ) : null}
-          {user && user.role === "admin" ? (
-            <Route path="/admin-users">
-              <AdminUserPanel user={user} />
-            </Route>
-          ) : null}
-          <Route path="/contacted">{user && <Contacted user={user} />}</Route>
-          <Route path="/offers">
-            <Offers user={user} />
+          {user && <Route path='/admin-properties'>
+            {user.role === 'admin' ? <AdminPanel 
+            user={user}
+            /> : <div><h2>Admin Access Needed</h2></div>}
+          </Route>}
+          {user && <Route path='/admin-users'>
+            {user.role === 'admin' ? <AdminUserPanel 
+            user={user}
+            /> : <div><h2>Admin Access Needed</h2></div>}
+          </Route>}
+          <Route path='/contacted'>
+            {user &&<Contacted user={user}/>}
+          </Route>
+          <Route path='/offers'>
+            <Offers user={user}/>
+          </Route>
+          <Route path='/user'>
+            <UserPage />
           </Route>
           <Route path="/myprofile">
             <MyProfileCard user={user}></MyProfileCard>

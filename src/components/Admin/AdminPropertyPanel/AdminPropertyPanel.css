@@ -1,5 +1,22 @@
 .admin-property-panel {
-  width: 60%;
-  text-align: left;
-  margin: auto;
+    width: 100%;
+    text-align: left;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.property-list{
+    width: 50%;
+}
+
+.admin-functions {
+    width: 90%;
+    display: flex;
+    justify-content: start;
+    padding-bottom: 25px;
+    align-items: baseline;
+}
+
+.admin-functions button {
+    border-radius: 15px;
 }

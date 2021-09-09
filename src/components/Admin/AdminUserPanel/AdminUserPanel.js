@@ -3,6 +3,7 @@ import useFetch from '../../../services/useFetch'
 import AdminUserCard from './AdminUserCard/AdminUserCard'
 import '../AdminUserPanel/AdminUserPanel.css'
 
+
 function AdminUserPanel({user}) {
     const { data: users, isPending } = useFetch(process.env.REACT_APP_SERVER_URL + "/users")
     return (
@@ -10,7 +11,7 @@ function AdminUserPanel({user}) {
             <h1>View/Edit All Users</h1>
             {users && <div className="user-list">
                 {users.users.map((user, ) => (
-                    <AdminUserCard user={user} key={user._id}/>
+                    <AdminUserCard user={user} key={user._id} eventHandler/>
                 ))}
             </div>}
         </div>

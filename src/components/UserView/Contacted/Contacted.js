@@ -61,7 +61,7 @@ function Contacted({user}) {
             <h2 className="column-heading">Contacted Properties</h2>
                 {adverts.map(advert => {
                     return (
-                    <div className="advert-item" key={advert._id} onClick={() => showSellerChat(advert)}>
+                    <div className="advert-item mt-1" key={advert._id} onClick={() => showSellerChat(advert)}>
                         <img src={advert.images[0]} alt={advert.images[0]}></img>
                         <div className="advert-name">
                             <h2><strong>{advert.property_details.property_title}</strong></h2>
