@@ -12,7 +12,7 @@ const handleSignup = (data) => {
       alert(res.data.message);
     })
     .catch((err) => {
-      alert(res);
+      alert(err);
     });
 };
 
