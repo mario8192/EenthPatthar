@@ -1,5 +1,10 @@
-.adjust_image{
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-bottom: 10px;
+.adjust_image {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.col-buttons {
+  display: flex;
+  flex-direction: row;
 }

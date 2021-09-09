@@ -3,6 +3,7 @@ import { tokenHeader } from "../../services/HeaderService";
 import axios from "axios";
 import { useState } from "react";
 import { useHistory } from "react-router";
+import "./myprofile.css";
 
 export default function MyProfileCard(props) {
   const [myAds, setmyAds] = useState(null);
@@ -155,7 +156,7 @@ export default function MyProfileCard(props) {
                           <div className="col-md-8">
                             <div className="card-body">
                               <div className="row">
-                                <div className="col-md-6">
+                                <div className="col-md-5">
                                   <h5 className="card-title">{val.title}</h5>
                                   <small>
                                     <i
@@ -165,11 +166,16 @@ export default function MyProfileCard(props) {
                                     {val.area}, {val.city}
                                   </small>
                                 </div>
-                                <div className="col-md-6">
+                                <div className="col-md-7 col-buttons">
                                   <h6 className="card-title">
                                     Posted on : {val.posted}
                                   </h6>
-                                  <div style={{ float: "right" }}>
+                                  <div
+                                    style={{
+                                      float: "right",
+                                      margin: "0 0 0 auto",
+                                    }}
+                                  >
                                     <button
                                       className="btn btn-outline-dark"
                                       onClick={(e) => deleteHandler(e, val.id)}
@@ -207,12 +213,12 @@ export default function MyProfileCard(props) {
                                 </div>
                               </div>
                               <div className="row">
-                                <div className="col-md-6">
+                                <div className="col-md-5">
                                   <h6 className="card-title">
                                     Intrested : {val.intrested}
                                   </h6>
                                 </div>
-                                <div className="col-md-6">
+                                <div className="col-md-7">
                                   <h6 className="card-title">
                                     Approved : {val.approve}
                                   </h6>

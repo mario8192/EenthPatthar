@@ -5,17 +5,23 @@ import { useHistory } from "react-router";
 import { tokenHeader } from "../../../../services/HeaderService";
 import "../AdminUserCard/AdminUserCard.css";
 
-function AdminUserCard({ user }) {
+function AdminUserCard({ user, setUserViewModalOpen, setCurrentId }) {
   const history = useHistory();
+
+  //   const viewUser = (e, id) => {
+  //     e.preventDefault();
+  //     history.push({
+  //       pathname: "/user",
+  //       state: {
+  //         id: id,
+  //       },
+  //     });
+  //   };
 
   const viewUser = (e, id) => {
     e.preventDefault();
-    history.push({
-      pathname: "/user",
-      state: {
-        id: id,
-      },
-    });
+    setUserViewModalOpen(true);
+    setCurrentId(id);
   };
 
   const deleteHandler = () => {

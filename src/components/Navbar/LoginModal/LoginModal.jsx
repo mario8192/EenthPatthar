@@ -75,7 +75,7 @@ const LoginModal = (props) => {
           Login
         </Button>
       </div>
-      <LoginModal />
+      {/* <LoginModal /> */}
     </div>
   );
 

@@ -175,7 +175,7 @@ const SignupModal = (props) => {
         </Button>
       </div>
 
-      <SignupModal open={signupModalOpen} />
+      {/* <SignupModal open={signupModalOpen} /> */}
     </div>
   );
 
