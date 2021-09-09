@@ -1,11 +1,16 @@
 import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import history from "./services/History";
 import { tokenHeader } from "./services/HeaderService";
 import axios from "axios";
 import PropertyList from "./components/Buying/PropertyList/PropertyList";
 import PropertyDetail from "./components/Buying/PropertyDetail/PropertyDetail";
+import AdminPanel from "./components/Admin/AdminPropertyPanel/AdminPropertyPanel";
+import AdminUserPanel from "./components/Admin/AdminUserPanel/AdminUserPanel";
+import Contacted from "./components/UserView/Contacted/Contacted";
+import Offers from "./components/UserView/Offers/Offers";
 import MyProfileCard from "./components/MyProfileCard/MyProfileCard";
 import AdForm from "./components/Adform/AdForm";
 
@@ -46,6 +51,21 @@ function App() {
           <Route exact path="/ad">
             <PropertyDetail setLoginModalOpen={setLoginModalOpen} />
           </Route>
+
+          {user && user.role === "admin" ? (
+            <Route path="/admin-properties">
+              <AdminPanel user={user} />
+            </Route>
+          ) : null}
+          {user && user.role === "admin" ? (
+            <Route path="/admin-users">
+              <AdminUserPanel user={user} />
+            </Route>
+          ) : null}
+          <Route path="/contacted">{user && <Contacted user={user} />}</Route>
+          <Route path="/offers">
+            <Offers user={user} />
+          </Route>
           <Route path="/myprofile">
             <MyProfileCard user={user}></MyProfileCard>
           </Route>
@@ -53,6 +73,13 @@ function App() {
             <AdForm></AdForm>
           </Route>
         </Switch>
+
+        {/* <Route path="/myprofile">
+          <MyProfileCard></MyProfileCard>
+        </Route>
+        <Route path="/adform">
+          <AdForm></AdForm>
+        </Route> */}
       </Router>
     </div>
   );

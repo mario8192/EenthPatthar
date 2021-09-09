@@ -1,0 +1,109 @@
+.contacted {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.advert-list {
+    width: 25%;
+    border-right: 2px solid grey;
+}
+
+.seller-info{
+    width: 75%;
+}
+
+.advert-item img {
+    padding: 10px;
+}
+
+.advert-item {
+    display: flex;
+    border-bottom: 1px solid grey;
+}
+
+.advert-name {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.seller-header {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.seller-header h2 {
+    margin: 0%;
+    margin-top: 5px;
+}
+
+.seller-header img {
+    border-radius: 50%;
+}
+
+.seller-header p {
+    margin: 0%;
+    margin-top: 5px;
+}
+
+.chat-text {
+    text-align: center;
+    margin: 0%;
+    border: 1px solid grey;
+    width: fit-content;
+    border-radius: 12px;
+    box-shadow: 2px 2px 2px grey;
+}
+
+.chat-text p {
+    margin: 0%;
+    padding: 5px;
+}
+
+.chatbox {
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    padding-right: 15px;
+}
+
+.chat-property {
+    border: 1px solid grey;
+    border-radius: 10px;
+    text-align: start;
+    width: 270px;
+    height: 200px;
+    margin-top: 10px;
+    box-shadow: 2px 2px 3px grey;
+}
+
+.chat-property h1 {
+    margin: 0%;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.chat-property p {
+    margin: 0%;
+    padding: 6px 0px 0px 0px;
+    margin-left: 15px;
+}
+
+.chat-property img {
+    width: 236px;
+    padding: 3%;
+    height: 104px;
+    margin-left: 8px;
+}
+
+.seller-section {
+    padding: 15px;
+}
+
+h2.column-heading {
+    text-align: center;
+    margin: 0%;
+    border: 1px solid gainsboro;
+    padding: 10px;
+}

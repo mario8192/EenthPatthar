@@ -53,6 +53,8 @@ const SignupModal = (props) => {
     setPhone("");
     setPassword("");
     setRePassword("");
+    setAdmin(false);
+    setImage(null);
   }, [signupModalOpen]);
 
   const body = (

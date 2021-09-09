@@ -38,11 +38,12 @@ export default function PropertyList() {
             area: ad.address.area_details,
             city: ad.address.city,
             type: ad.property_details.property_type,
-            approved: ad.is_approved
+            approved: ad.is_approved,
+            image: ad.image,
           };
         });
         setAds(ads);
-        console.log(ads)
+        console.log(ads);
       } catch (err) {
         alert(err.message);
       }
@@ -73,7 +74,7 @@ export default function PropertyList() {
                   val.type.toLowerCase().includes(Search.toLowerCase())
                 ) {
                   return val;
-                } else if (val.bhk == Search) {
+                } else if (val.bhk === Search) {
                   return val;
                 } else if (
                   val.city.toLowerCase().includes(Search.toLowerCase())
@@ -81,75 +82,80 @@ export default function PropertyList() {
                   return val;
                 }
               }).map((ourAds) => {
-                return(
+                return (
                   <div className="mt-3" key={ourAds.id}>
-                    {
-                      ourAds.approved == true ?
-                    <div
-                      className="card"
-                      style={{ width: "800px", borderRadius: "10px" }}
-                    >
-                      <Link
-                        onClick={(e) => eventHandler(e, ourAds.id)}
-                        to="/ad"
-                        style={{ textDecoration: "none", color: "black" }}
+                    {ourAds.approved == true ? (
+                      <div
+                        className="card"
+                        style={{ width: "800px", borderRadius: "10px" }}
                       >
-                        <div className="row">
-                          <div className="col-md-4">
-                            <div className="adjust_image">
-                              <img
-                                className="img-fluid"
-                                src={property}
-                                alt="property_image"
-                              />
-                            </div>
-                          </div>
-                          <div className="col-md-8">
-                            <div className="card-body">
-                              <div className="row">
-                                <div className="col">
-                                  <h5 className="card-title">{ourAds.title}</h5>
-                                </div>
-                                <div className="col">
-                                  <h4 style={{ float: "right" }}>
-                                    ₹{ourAds.price}
-                                  </h4>
-                                </div>
-                              </div>
-                              <div className="card-subtitle mb-2">
-                                <i className="fa fa-map-marker" aria-hidden="true"></i> {ourAds.area}, {ourAds.city}
-                              </div>
-                              <div className="card-text">{ourAds.desc}</div>
-                              <div className="row">
-                                <div className="col-6 col-sm-2">
-                                  <button
-                                    type="button"
-                                    className="btn btn-outline-primary mt-2"
-                                    style={{ borderRadius: "15px" }}
-                                  >
-                                    {ourAds.bhk} BHK
-                                  </button>
-                                </div>
-                                <div className="col-col-6 col-sm-2">
-                                  <button
-                                    type="button"
-                                    className="btn btn-outline-primary mt-2"
-                                    style={{ borderRadius: "15px" }}
-                                  >
-                                    {ourAds.type}
-                                  </button>
-                                </div>
+                        <Link
+                          onClick={(e) => eventHandler(e, ourAds.id)}
+                          to="/ad"
+                          style={{ textDecoration: "none", color: "black" }}
+                        >
+                          <div className="row">
+                            <div className="col-md-4">
+                              <div className="adjust_image">
+                                <img
+                                  className="img-fluid"
+                                  src={ourAds.image}
+                                  alt="property_image"
+                                />
                               </div>
                             </div>
+                            <div className="col-md-8">
+                              <div className="card-body">
+                                <div className="row">
+                                  <div className="col">
+                                    <h5 className="card-title">
+                                      {ourAds.title}
+                                    </h5>
+                                  </div>
+                                  <div className="col">
+                                    <h4 style={{ float: "right" }}>
+                                      ₹{ourAds.price}
+                                    </h4>
+                                  </div>
+                                </div>
+                                <div className="card-subtitle mb-2">
+                                  <i
+                                    className="fa fa-map-marker"
+                                    aria-hidden="true"
+                                  ></i>{" "}
+                                  {ourAds.area}, {ourAds.city}
+                                </div>
+                                <div className="card-text">{ourAds.desc}</div>
+                                <div className="row">
+                                  <div className="col-6 col-sm-2">
+                                    <button
+                                      type="button"
+                                      className="btn btn-outline-primary mt-2"
+                                      style={{ borderRadius: "15px" }}
+                                    >
+                                      {ourAds.bhk} BHK
+                                    </button>
+                                  </div>
+                                  <div className="col-col-6 col-sm-2">
+                                    <button
+                                      type="button"
+                                      className="btn btn-outline-primary mt-2"
+                                      style={{ borderRadius: "15px" }}
+                                    >
+                                      {ourAds.type}
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </Link>
-                    </div>
-                    :
-                    <div></div>
-                      }
+                        </Link>
+                      </div>
+                    ) : (
+                      <div></div>
+                    )}
                   </div>
-                )
+                );
               })}
           </div>
         </div>

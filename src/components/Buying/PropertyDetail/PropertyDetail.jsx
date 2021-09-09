@@ -62,7 +62,7 @@ export default function PropertyDetail(props) {
                     {myAd.property_details.description}
                   </div>
                   <div className="mt-4">
-                    <img className="img-fluid" src={property} alt="alt" />
+                    <img className="img-fluid" src={myAd.image} alt="alt" />
                   </div>
                 </div>
                 <div className="col-md-4">

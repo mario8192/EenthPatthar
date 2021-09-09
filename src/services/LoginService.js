@@ -8,7 +8,7 @@ const handleLogin = (data) => {
     .then((res) => {
       console.log(res);
       localStorage.setItem("token", res.data.token);
-      window.location.replace(window.location.pathname);
+      window.location.reload();
     })
     .catch((err) => {
       alert(err);

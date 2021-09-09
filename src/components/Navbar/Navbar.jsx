@@ -50,15 +50,40 @@ const Navbar = (props) => {
             </Fragment>
           ) : (
             <Fragment>
-              <Link to="/myprofile" className="userActions">
-                <div
-                  className="profile__image"
-                  style={{
-                    backgroundImage: "url(" + user.profile_picture + ")",
-                  }}
-                ></div>
-                <div className="profile__name">{user.email}</div>
-              </Link>
+              <div className="dropdown">
+                <button
+                  type="button"
+                  className="userActions"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <div
+                    className="profile__image"
+                    style={{
+                      backgroundImage: "url(" + user.profile_picture + ")",
+                    }}
+                  ></div>
+                  <div className="profile__name">{user.email}</div>
+                </button>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="/myprofile">
+                    My Profile
+                  </a>
+                  <a class="dropdown-item" href="/contacted">
+                    Contacted
+                  </a>
+                  {user && user.role == "admin" ? (
+                    <a class="dropdown-item" href="/admin-properties">
+                      Admin panel
+                    </a>
+                  ) : null}
+                </div>
+              </div>
+
+              <Link to="/myprofile" className="userActions"></Link>
+
               <div className="login__button" onClick={logout}>
                 Logout
               </div>
