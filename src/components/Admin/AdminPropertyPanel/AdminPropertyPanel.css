@@ -1,22 +1,26 @@
 .admin-property-panel {
-    width: 100%;
-    text-align: left;
-    margin: auto;
-    margin-top: 25px;
+  width: 60%;
+  text-align: left;
+  margin: auto;
+  margin-top: 40px;
 }
 
-.property-list{
-    width: 50%;
+.admin-property-panel h1 {
+  margin: 25px 11px 10px 11px;
+}
+
+.property-list {
+  width: 100%;
 }
 
 .admin-functions {
-    width: 90%;
-    display: flex;
-    justify-content: start;
-    padding-bottom: 25px;
-    align-items: baseline;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  padding-bottom: 35px;
+  align-items: baseline;
 }
 
 .admin-functions button {
-    border-radius: 15px;
+  border-radius: 15px;
 }

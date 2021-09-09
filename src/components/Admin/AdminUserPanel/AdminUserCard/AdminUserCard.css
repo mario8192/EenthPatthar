@@ -7,19 +7,18 @@
 
 .admin-user-card {
   display: flex;
-  width: 60%;
+  width: 100%;
   background-color: white;
-  box-shadow: 2px 2px 6px 0px grey;
-  margin-left: 75px;
+  box-shadow: 2px 2px 10px 0px rgba(161, 161, 161, 0.616);
+  border-radius: 5px;
 }
 
-
 .user-details {
-    display: flex;
-    flex-direction: column;
-    width: 75%;
-    align-content: center;
-    margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  align-content: center;
+  margin-left: 15px;
 }
 
 .user-details h4 {
@@ -28,9 +27,9 @@
 }
 
 .more-details {
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
 }
 
 .admin-user-controls {
