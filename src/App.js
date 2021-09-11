@@ -13,11 +13,15 @@ import MyProfileCard from "./components/MyProfileCard/MyProfileCard";
 import AdForm from "./components/Adform/AdForm";
 import UserPage from "./components/UserView/UserPage/UserPage";
 import Admin_main from "./components/Admin/Admin_main";
+import Loader from "./components/Loader/Loader";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [isLoading, setLoading] = useState(false);
+
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [signupModalOpen, setSignupModalOpen] = useState(false);
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       const data = axios({
@@ -43,7 +47,9 @@ function App() {
           setLoginModalOpen={setLoginModalOpen}
           signupModalOpen={signupModalOpen}
           setSignupModalOpen={setSignupModalOpen}
+          setLoading={setLoading}
         />
+        <Loader isLoading={isLoading} />
         <Switch>
           <Route exact path="/">
             <PropertyList />
@@ -51,13 +57,17 @@ function App() {
           <Route exact path="/ad">
             <PropertyDetail setLoginModalOpen={setLoginModalOpen} />
           </Route>
-          { user && <Route path = "/admin_main">
-              {user.role === 'admin' ? 
-              <Admin_main user = {user}></Admin_main> :
-              <div>
-                <h2>Admin Access Needed</h2>
-              </div>}
-            </Route>}
+          {user && (
+            <Route path="/admin_main">
+              {user.role === "admin" ? (
+                <Admin_main user={user}></Admin_main>
+              ) : (
+                <div>
+                  <h2>Admin Access Needed</h2>
+                </div>
+              )}
+            </Route>
+          )}
           {/* {user && <Route path='/admin-properties'>
             {user.role === 'admin' ? <AdminPanel 
             user={user}
@@ -68,13 +78,11 @@ function App() {
             user={user}
             /> : <div><h2>Admin Access Needed</h2></div>}
           </Route>} */}
-          <Route path='/contacted'>
-            {user &&<Contacted user={user}/>}
+          <Route path="/contacted">{user && <Contacted user={user} />}</Route>
+          <Route path="/offers">
+            <Offers user={user} />
           </Route>
-          <Route path='/offers'>
-            <Offers user={user}/>
-          </Route>
-          <Route path='/user'>
+          <Route path="/user">
             <UserPage />
           </Route>
           <Route path="/myprofile">

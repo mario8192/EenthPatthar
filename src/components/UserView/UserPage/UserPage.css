@@ -26,7 +26,13 @@
 
 .admin-user-container {
   width: 600px;
+  animation: fadeIn 0.2s;
 }
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+} 
+
 
 .user-col-2 h6 {
   width: 180px;

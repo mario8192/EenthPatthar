@@ -31,7 +31,13 @@ const useStyles = makeStyles((theme) => ({
 const LoginModal = (props) => {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
-  const { loginModalOpen, setLoginModalOpen, handleLogin, switchModal } = props;
+  const {
+    loginModalOpen,
+    setLoginModalOpen,
+    handleLogin,
+    switchModal,
+    setLoading,
+  } = props;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -68,8 +74,11 @@ const LoginModal = (props) => {
         </Button>
         <Button
           onClick={() => {
-            setLoginModalOpen(false);
-            handleLogin({ email: email, password: password });
+            handleLogin(
+              { email: email, password: password },
+              setLoading,
+              setLoginModalOpen
+            );
           }}
         >
           Login

@@ -36,8 +36,13 @@ const defaultPicURL =
 const SignupModal = (props) => {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
-  const { signupModalOpen, setSignupModalOpen, handleSignup, switchModal } =
-    props;
+  const {
+    signupModalOpen,
+    setSignupModalOpen,
+    handleSignup,
+    switchModal,
+    setLoading,
+  } = props;
 
   const [FullName, setFullName] = useState("");
   const [Email, setEmail] = useState("");
@@ -152,23 +157,29 @@ const SignupModal = (props) => {
         </Button>
         <Button
           onClick={async () => {
-            setSignupModalOpen(false);
-            let imageURL;
+            let imageURL = defaultPicURL;
             try {
-              imageURL = await UploadImage(Image, "profile");
+              imageURL =
+                Image == null
+                  ? defaultPicURL
+                  : await UploadImage(Image, "profile");
             } catch (err) {
               console.log(err);
               imageURL = defaultPicURL;
             }
-            handleSignup({
-              fullname: FullName,
-              email: Email,
-              mobile: Phone,
-              password: Password,
-              role: Admin ? "admin" : "user",
-              is_subscribed: false,
-              profile_picture: imageURL,
-            });
+            handleSignup(
+              {
+                fullname: FullName,
+                email: Email,
+                mobile: Phone,
+                password: Password,
+                role: Admin ? "admin" : "user",
+                is_subscribed: true,
+                profile_picture: imageURL,
+              },
+              setLoading,
+              setSignupModalOpen
+            );
           }}
         >
           Create

@@ -17,6 +17,7 @@ const Navbar = (props) => {
     setLoginModalOpen,
     signupModalOpen,
     setSignupModalOpen,
+    setLoading,
   } = props;
 
   const loginClickAction = () => {
@@ -36,7 +37,9 @@ const Navbar = (props) => {
       <div className="navbar__container">
         <div className="navbar__brand__icon" />
         <Link to="/">
-          <h2 className="navbar__appname" style = {{textDecoration:"none"}}>EenthPatthar.com</h2>
+          <h2 className="navbar__appname" style={{ textDecoration: "none" }}>
+            EenthPatthar.com
+          </h2>
         </Link>
         <div className="userActions">
           {!user ? (
@@ -75,7 +78,10 @@ const Navbar = (props) => {
                     Contacted
                   </a>
                   {user && user.role == "admin" ? (
-                    <a class="dropdown-item" href="/admin_main/admin-properties">
+                    <a
+                      class="dropdown-item"
+                      href="/admin_main/admin-properties"
+                    >
                       Admin panel
                     </a>
                   ) : null}
@@ -95,12 +101,14 @@ const Navbar = (props) => {
             setLoginModalOpen={setLoginModalOpen}
             handleLogin={handleLogin}
             switchModal={switchModal}
+            setLoading={setLoading}
           />
           <SignupModal
             signupModalOpen={signupModalOpen}
             setSignupModalOpen={setSignupModalOpen}
             handleSignup={handleSignup}
             switchModal={switchModal}
+            setLoading={setLoading}
           />
         </div>
       </div>
