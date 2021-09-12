@@ -70,11 +70,11 @@ const Navbar = (props) => {
                   <div className="profile__name">{user.email}</div>
                 </button>
 
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="/myprofile">
+                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a className="dropdown-item" href="/myprofile">
                     My Profile
                   </a>
-                  <a class="dropdown-item" href="/contacted">
+                  <a className="dropdown-item" href="/contacted">
                     Contacted
                   </a>
                   {user && user.role == "admin" ? (

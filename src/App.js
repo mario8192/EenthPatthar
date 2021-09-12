@@ -2,7 +2,6 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import { useEffect, useState } from "react";
-import history from "./services/History";
 import { tokenHeader } from "./services/HeaderService";
 import axios from "axios";
 import PropertyList from "./components/Buying/PropertyList/PropertyList";
@@ -38,6 +37,26 @@ function App() {
     } else setUser(null);
   }, []);
 
+  
+
+  const loadScript = (src) => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  };
+
+  useEffect(() => {
+    loadScript("https://checkout.razorpay.com/v1/checkout.js");
+  });
+
   return (
     <div className="App">
       <Router>
@@ -55,7 +74,7 @@ function App() {
             <PropertyList />
           </Route>
           <Route exact path="/ad">
-            <PropertyDetail setLoginModalOpen={setLoginModalOpen} />
+            <PropertyDetail user={user} setLoginModalOpen={setLoginModalOpen} />
           </Route>
           {user && (
             <Route path="/admin_main">

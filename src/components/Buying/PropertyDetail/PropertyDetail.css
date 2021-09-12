@@ -3,3 +3,8 @@
   height: auto;
   border-radius: 10px;
 }
+
+.banner .card {
+    width: 350px;
+    height: auto;
+}
