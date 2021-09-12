@@ -1,16 +1,21 @@
 import React from "react";
+import { useState } from "react";
 import { useHistory, Switch, Route } from "react-router-dom";
 import AdminPanel from "./AdminPropertyPanel/AdminPropertyPanel";
 import AdminUserPanel from "./AdminUserPanel/AdminUserPanel";
 export default function Admin_main({ user }) {
   const history = useHistory();
+  const [active, setActive] = useState("properties");
 
   const approveHandler = () => {
     history.push("/admin_main/admin-properties");
+    setActive("properties");
   };
   const userHandler = () => {
     history.push("/admin_main/admin-users");
+    setActive("users");
   };
+
   return (
     <div>
       <div
@@ -35,10 +40,32 @@ export default function Admin_main({ user }) {
             >
               <tbody>
                 <tr>
-                  <td onClick={approveHandler}>Manage Ads</td>
+                  <td
+                    onClick={approveHandler}
+                    style={
+                      active == "properties"
+                        ? {
+                            borderLeft: "3px solid black",
+                          }
+                        : null
+                    }
+                  >
+                    Manage Ads
+                  </td>
                 </tr>
                 <tr>
-                  <td onClick={userHandler}>Manage Users</td>
+                  <td
+                    onClick={userHandler}
+                    style={
+                      active == "users"
+                        ? {
+                            borderLeft: "3px solid black",
+                          }
+                        : null
+                    }
+                  >
+                    Manage Users
+                  </td>
                 </tr>
               </tbody>
             </table>

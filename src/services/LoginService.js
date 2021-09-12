@@ -10,7 +10,7 @@ const handleLogin = (data, setLoading, setLoginModalOpen) => {
       console.log(res);
       localStorage.setItem("token", res.data.token);
       setLoading(false);
-      setLoginModalOpen(false);
+      setLoginModalOpen && setLoginModalOpen(false);
       window.location.reload();
     })
     .catch((err) => {

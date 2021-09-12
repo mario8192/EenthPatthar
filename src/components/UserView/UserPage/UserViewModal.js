@@ -61,6 +61,7 @@ function UserViewModal({ CurrentId, setUserViewModalOpen, UserViewModalOpen }) {
           <div className="prof_pic">
             <img src={user.profile_picture} alt={user.profile_picture}></img>
           </div>
+          <hr />
           <div className="user_details">
             <div className="user-col-1">
               <h2>{user.fullname}</h2>

@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const defaultPicURL =
-  "https://www.searchpng.com/wp-content/uploads/2019/02/Deafult-Profile-Pitcher.png";
+  "https://www.hrzone.com/sites/all/themes/pp/img/default-user.png";
 
 const SignupModal = (props) => {
   const classes = useStyles();

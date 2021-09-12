@@ -37,7 +37,10 @@ function AdminUserCard({ user, setUserViewModalOpen, setCurrentId }) {
   };
 
   return (
-    <div className="admin-user-card mt-3">
+    <div
+      className="admin-user-card mt-3"
+      onClick={(e) => viewUser(e, user._id)}
+    >
       <img src={user.profile_picture} alt="profile_picture"></img>
       <div className="user-details">
         <h2>{user.fullname}</h2>
@@ -47,7 +50,7 @@ function AdminUserCard({ user, setUserViewModalOpen, setCurrentId }) {
         </div>
       </div>
       <div className="admin-user-controls">
-        <AiFillEye onClick={(e) => viewUser(e, user._id)} />
+        {/* <AiFillEye color="#333" onClick={(e) => viewUser(e, user._id)} /> */}
         <AiOutlineDelete color="red" onClick={deleteHandler} />
       </div>
     </div>
