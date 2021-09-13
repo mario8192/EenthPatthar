@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { tokenHeader } from '../../../services/HeaderService'
-import './Contacted.css'
+import React, { useState, useEffect } from "react";
+import { tokenHeader } from "../../../services/HeaderService";
+import "./Contacted.css";
 
 function Contacted({ user }) {
   //const { data: adverts, isPending } = useFetch(process.env.REACT_APP_SERVER_URL+"/advertisements")
@@ -67,7 +67,7 @@ function Contacted({ user }) {
             return (
               advert && (
                 <div
-                  className="advert-item mt-1"
+                  className="advert-item hoverfill"
                   key={advert._id}
                   onClick={() => showSellerChat(advert)}
                 >

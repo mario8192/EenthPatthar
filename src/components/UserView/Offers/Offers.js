@@ -11,23 +11,41 @@ function Offers() {
   const [buyers, setBuyers] = useState([]);
   const [buyer, setBuyer] = useState(null);
 
-  const showBuyersInterested = (advert) => {
+  useEffect(() => {
+    async function func() {
+      if (property && property.interested) {
+        const t_buyers = [];
+
+        for (let i = 0; i < property.interested.length; i++) {
+          const buyer_id = property.interested[i];
+          let res = await fetch(
+            process.env.REACT_APP_SERVER_URL + "/user?id=" + buyer_id
+          );
+          res = await res.json();
+
+          if (res.user) {
+            const t_user = res.user;
+            const ids = buyers.filter((el) => {
+              return el._id;
+            });
+            if (!ids.includes(t_user._id)) {
+              t_buyers.push(t_user);
+            }
+          }
+        }
+        setBuyers(t_buyers);
+      }
+    }
+    func();
+  }, [property]);
+
+  useEffect(() => {
+    console.log(buyers);
+  }, buyers);
+
+  const showBuyersInterested = async (advert) => {
     console.log("showing buyer list");
     setProperty(advert);
-    if (advert.interested) {
-      advert.interested.filter((buyer_id) => {
-        fetch(process.env.REACT_APP_SERVER_URL + "/user?id=" + buyer_id)
-          .then((res) => {
-            return res.json();
-          })
-          .then((data) => {
-            if (buyers.length < 1) {
-              setBuyers((buyer_list) => [...buyer_list, data.user]);
-            }
-          });
-      });
-    }
-    console.log(buyers);
   };
 
   const showBuyerChat = (buyer) => {
@@ -51,7 +69,7 @@ function Offers() {
           <h2 className="column-heading">My Advertisements</h2>
           {adverts.advertisements.map((advert) => (
             <div
-              className="advert-item"
+              className="advert-item hoverfill"
               key={advert._id}
               onClick={() => showBuyersInterested(advert)}
             >
@@ -75,7 +93,7 @@ function Offers() {
               (buyer) =>
                 buyer && (
                   <div
-                    className="buyer-item"
+                    className="buyer-item hoverfill"
                     key={buyer._id}
                     onClick={() => showBuyerChat(buyer)}
                   >

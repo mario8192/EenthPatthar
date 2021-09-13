@@ -127,8 +127,8 @@ export default function MyProfileCard(props) {
               </div>
             )}
           </div>
-          <div className="col-md-4">
-            <div className="row">
+          <div className="col-md-8">
+            <div className="row ">
               {/* <div onClick={fetchmyAds} className="col">
                 <button className="btn btn-outline-primary">
                   Show my Advertisements
@@ -140,12 +140,12 @@ export default function MyProfileCard(props) {
                 </button>
               </div>
             </div>
-            <div className="row">
-              {myAds &&
+            <div className="row my-property-list-container">
+              {myAds && myAds.length > 0 ? (
                 myAds.map((val) => {
                   return (
                     <div className="mt-3" key={val.id}>
-                      <div className="card" style={{ width: "max" }}>
+                      <div className="card glow" style={{ width: "max" }}>
                         <div className="row">
                           <div className="col-md-4">
                             <div className="adjust_image">
@@ -219,12 +219,13 @@ export default function MyProfileCard(props) {
                               <div className="row">
                                 <div className="col-md-5">
                                   <h6 className="card-title">
-                                    Intrested : {val.intrested}
+                                    Interested :{" "}
+                                    {val.interested ? val.interested.length : 0}
                                   </h6>
                                 </div>
                                 <div className="col-md-7">
                                   <h6 className="card-title">
-                                    Approved : {val.approve}
+                                    Approved : {val.approve ? "Yes" : "Pending"}
                                   </h6>
                                 </div>
                               </div>
@@ -234,7 +235,12 @@ export default function MyProfileCard(props) {
                       </div>
                     </div>
                   );
-                })}
+                })
+              ) : (
+                <div className="empty-list-msg">
+                  You don't have any active ads. Start one now :D
+                </div>
+              )}
             </div>
           </div>
         </div>

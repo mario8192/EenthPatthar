@@ -2,17 +2,24 @@ import React, { Component, Fragment } from "react";
 import { Button, Modal } from "react-bootstrap";
 import displayRazorpay from "../../../services/paymentgateway";
 
+import premium from "./images/premium.svg";
+import padlock from "./images/lock.png";
+import wallet from "./images/wallet.svg";
+import "./Banner.css";
+
 const Banner = ({ user, show, handleClose, handleShow, seller }) => {
   const LoginToUnlock = (
     <div className="col-md-12">
+      <img className="banner-icon" src={padlock}></img>
       <h5 className="card-title">Login to access all features</h5>
     </div>
   );
 
   const SubscribeToContact = (
     <div>
+      <img className="banner-icon" src={wallet}></img>
       <h5 className="card-title">
-        Buy subscription now to contact seller directly
+        Buy subscription now to contact sellers directly
       </h5>
       <button className="btn btn-outline-primary" onClick={handleShow}>
         Subscribe
@@ -30,13 +37,24 @@ const Banner = ({ user, show, handleClose, handleShow, seller }) => {
           alt="seller_image"
         />
         <h4 className="card-title">{seller && seller.fullname}</h4>
-        <div className="card-subtitle">Email: {seller && seller.email}</div>
-        <div className="card-subtitle">Mobile: {seller && seller.mobile}</div>
+        <div style={{ height: "10px" }} />
+        <div className="card-subtitle">
+          Email <div className="seller-values">: {seller && seller.email}</div>
+        </div>
+        <div className="card-subtitle">
+          Mobile{" "}
+          <div className="seller-values">: {seller && seller.mobile}</div>
+        </div>
       </div>
     </Fragment>
   );
 
-  const Subscribed = <div>You are subscribed</div>;
+  const Subscribed = (
+    <div>
+      <img className="banner-icon" src={premium}></img>
+      <h5 className="card-title">Hooray! You are a subscribed member</h5>
+    </div>
+  );
 
   return (
     <div>
@@ -63,10 +81,10 @@ const Banner = ({ user, show, handleClose, handleShow, seller }) => {
               <Modal.Header closeButton>
                 <Modal.Title>Subscribe Now</Modal.Title>
               </Modal.Header>
-              <Modal.Body>Buy subscription to contact seller..</Modal.Body>
+              <Modal.Body>Buy subscription to contact seller...</Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
-                  Later
+                  Maybe Later
                 </Button>
                 <Button
                   variant="primary"

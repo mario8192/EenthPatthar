@@ -9,3 +9,13 @@
   width: 100%;
   height: auto;
 }
+
+.post__ad__form {
+  width: 70%;
+  margin: auto;
+  background-color: white;
+  padding: 10px;
+  border: 2px solid rgba(88, 151, 235, 0.521);
+  box-shadow: 0 0 50px -10px rgba(57, 82, 114, 0.548);
+  border-top: none;
+}

@@ -2,6 +2,12 @@
   padding-top: 10px;
   padding-left: 10px;
   padding-bottom: 10px;
+  height: 100%;
+}
+
+.adjust_image .img-fluid {
+  height: 100%;
+  object-fit: cover;
 }
 
 .col-buttons {
@@ -13,4 +19,16 @@
   max-width: 230px;
   height: 230px;
   object-fit: cover;
+}
+
+.empty-list-msg {
+  width: max-content;
+  font-size: 20px;
+  display: flex;
+  margin: auto;
+  align-self: center;
+}
+
+.my-property-list-container {
+  min-height: 300px;
 }

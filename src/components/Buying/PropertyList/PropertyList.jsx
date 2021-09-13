@@ -39,6 +39,7 @@ export default function PropertyList({ user, show, handleClose, handleShow }) {
             price: ad.quoted_price,
             desc: ad.property_details.description,
             bhk: ad.property_details.n_bhk,
+            carpet_area: ad.property_details.carpet_area,
             area: ad.address.area_details,
             city: ad.address.city,
             type: ad.property_details.property_type,
@@ -119,7 +120,7 @@ export default function PropertyList({ user, show, handleClose, handleShow }) {
                                     </div>
                                     <div className="col">
                                       <h4 style={{ float: "right" }}>
-                                        ₹{ourAds.price}
+                                        ₹{ourAds.price.toLocaleString("en-IN")}
                                       </h4>
                                     </div>
                                   </div>
@@ -132,24 +133,29 @@ export default function PropertyList({ user, show, handleClose, handleShow }) {
                                   </div>
                                   <div className="card-text">{ourAds.desc}</div>
                                   <div className="row">
-                                    <div className="col-6 col-sm-2">
-                                      <button
-                                        type="button"
-                                        className="btn btn-outline-primary mt-2"
-                                        style={{ borderRadius: "15px" }}
-                                      >
-                                        {ourAds.bhk} BHK
-                                      </button>
-                                    </div>
-                                    <div className="col-col-6 col-sm-2">
-                                      <button
-                                        type="button"
-                                        className="btn btn-outline-primary mt-2"
-                                        style={{ borderRadius: "15px" }}
-                                      >
-                                        {ourAds.type}
-                                      </button>
-                                    </div>
+                                    <button
+                                      type="button"
+                                      className="btn btn-outline-primary mt-2 mr-2"
+                                      style={{ borderRadius: "15px" }}
+                                    >
+                                      {ourAds.bhk} BHK
+                                    </button>
+
+                                    <button
+                                      type="button"
+                                      className="btn btn-outline-primary mt-2  mr-2"
+                                      style={{ borderRadius: "15px" }}
+                                    >
+                                      {ourAds.carpet_area} sqft.
+                                    </button>
+
+                                    <button
+                                      type="button"
+                                      className="btn btn-outline-primary mt-2  mr-2"
+                                      style={{ borderRadius: "15px" }}
+                                    >
+                                      {ourAds.type}
+                                    </button>
                                   </div>
                                 </div>
                               </div>

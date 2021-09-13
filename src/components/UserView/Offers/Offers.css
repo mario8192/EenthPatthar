@@ -37,10 +37,17 @@
 
 .advert-item {
   display: flex;
-  border-bottom: 1px solid grey;
-  border-radius: 5px;
-  box-shadow: 1px 1px 3px grey;
-  margin-bottom: 5px;
+  border-bottom: 1px solid rgba(46, 46, 46, 0.137);
+  /* border-radius: 5px; */
+  box-shadow: 1px 1px 3px rgba(128, 128, 128, 0.534);
+  background-color: white;
+}
+
+.hoverfill {
+  transition: all ease-in 0.1s;
+}
+.hoverfill:hover {
+  background-color: rgba(129, 212, 238, 0.76);
 }
 
 .advert-item img {
@@ -52,10 +59,10 @@
 
 .buyer-item {
   display: flex;
-  border-bottom: 1px solid gray;
-  border-radius: 5px;
-  box-shadow: 1px 1px 3px grey;
-  margin-bottom: 5px;
+  border-bottom: 1px solid rgba(46, 46, 46, 0.137);
+  /* border-radius: 5px; */
+  box-shadow: 1px 1px 3px rgba(128, 128, 128, 0.534);
+  background-color: white;
 }
 
 .buyer-item img {
@@ -114,10 +121,12 @@ h2.column-heading {
 .chat-text {
   text-align: center;
   margin: 0%;
-  border: 1px solid grey;
+  padding: 0px 5px;
+  border: 1px solid rgba(110, 110, 110, 0.459);
   width: fit-content;
   border-radius: 12px;
-  box-shadow: 2px 2px 2px grey;
+  box-shadow: 2px 2px 2px rgba(150, 150, 150, 0.521);
+  background: white;
 }
 
 .chat-text p {
@@ -125,8 +134,8 @@ h2.column-heading {
   padding: 5px;
 }
 
-.chatbox {
-  padding-top: 80px;
+.buyer-section .chatbox {
+  padding-top: 25px;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -134,13 +143,14 @@ h2.column-heading {
 }
 
 .chat-property {
-  border: 1px solid grey;
+  border: 1px solid rgba(110, 110, 110, 0.459);
   border-radius: 10px;
   text-align: start;
   width: 270px;
-  height: 200px;
+  height: auto;
   margin-top: 10px;
-  box-shadow: 2px 2px 3px grey;
+  box-shadow: 2px 2px 2px rgba(150, 150, 150, 0.521);
+  background: white;
 }
 
 .chat-property h1 {
@@ -156,8 +166,13 @@ h2.column-heading {
 }
 
 .chat-property img {
-  width: 236px;
-  padding: 3%;
-  height: 104px;
-  margin-left: 8px;
+  width: 100%;
+  padding: 5%;
+  height: 185px;
+}
+
+.contacted,
+.offers {
+  max-width: 80%;
+  margin: auto;
 }

@@ -17,10 +17,11 @@
   padding: 10px;
 }
 
-.advert-item {
+/* .advert-item {
   display: flex;
   border-bottom: 1px solid grey;
-}
+  
+} */
 
 .advert-name {
   text-align: left;
@@ -62,14 +63,14 @@
   padding: 5px;
 }
 
-.chatbox {
-  padding-top: 80px;
+.seller-section .chatbox {
+  padding-top: 25px;
   display: flex;
   flex-direction: column;
   align-items: end;
   padding-right: 15px;
 }
-
+/* 
 .chat-property {
   border: 1px solid grey;
   border-radius: 10px;
@@ -97,7 +98,7 @@
   padding: 3%;
   height: 104px;
   margin-left: 8px;
-}
+} */
 
 .seller-section {
   padding: 15px;

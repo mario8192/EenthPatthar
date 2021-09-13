@@ -2,7 +2,7 @@
   width: 100%;
   height: 60px;
   display: flex;
-  /* position: fixed; */
+  position: relative;
   justify-content: center;
   border: 2px solid rgb(235, 235, 235);
   background-color: white;
@@ -31,7 +31,7 @@
 }
 .navbar__appname:hover {
   text-decoration: none !important;
-  text-decoration-color: transparent
+  text-decoration-color: transparent;
 }
 .navbar__brand__icon {
   background-image: url("./brand.jpg");

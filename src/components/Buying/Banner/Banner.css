@@ -1,0 +1,36 @@
+.banner .card-title {
+  width: max-content;
+  max-width: 100%;
+  margin: auto;
+  text-align: center;
+}
+
+.banner .btn {
+  margin: 20px auto;
+  display: flex;
+}
+
+.banner .img-fluid {
+  width: 270px;
+  height: 270px;
+  margin: 12px auto;
+  object-fit: cover;
+}
+
+.banner .card-subtitle {
+  display: flex;
+}
+.banner .seller-values {
+  display: flex;
+  position: absolute;
+  left: 70px;
+}
+
+.banner .banner-icon {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  color: rgba(22, 22, 22, 0.945);
+  margin: 20px auto;
+  display: flex;
+}

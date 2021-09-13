@@ -124,10 +124,20 @@ export default function PropertyDetail({
                     <i className="fa fa-map-marker" aria-hidden="true"></i>{" "}
                     {myAd.address.area_details}, {myAd.address.city}
                   </div>
-                  <h5 className="card-subtitle mb-4 mt-2">
-                    {" "}
-                    {myAd.property_details.n_bhk} BHK
-                  </h5>
+                  <div className="row">
+                    <div className="col-md-2 pr-0">
+                      <h5 className="card-subtitle mb-4 mt-2">
+                        {myAd.property_details.n_bhk} BHK
+                      </h5>
+                    </div>
+
+                    <div className="col-md-3 pl-2">
+                      <h5 className="card-subtitle mb-4 mt-2">
+                        {myAd.property_details.carpet_area} sqft.
+                      </h5>
+                    </div>
+                  </div>
+
                   <div className="card-text">
                     {myAd.property_details.description}
                   </div>
@@ -136,7 +146,9 @@ export default function PropertyDetail({
                   </div>
                 </div>
                 <div className="col-md-4 property-detail-right-container">
-                  <h3 className="property-price">₹ {myAd.quoted_price}</h3>
+                  <h3 className="property-price">
+                    ₹ {myAd.quoted_price.toLocaleString("en-IN")}
+                  </h3>
                   <div className="contact-seller-button mt-5">
                     <button
                       className="btn btn-outline-primary"
