@@ -3,7 +3,8 @@ import "./PropertyDetail.css";
 import { useLocation, useHistory } from "react-router-dom";
 import {Button, Modal} from 'react-bootstrap';
 import axios from "axios";
-import displayRazorpay from "../../../services/paymentgateway";
+import displayRazorpay from "../../../services/paymentGateway";
+import updateLists from "../../../services/updateLists";
 import { tokenHeader } from "../../../services/HeaderService";
 
 export default function PropertyDetail(props) {
@@ -16,21 +17,12 @@ export default function PropertyDetail(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [subscribed, setSubscribed] = useState(user && user.is_subscribed)
-  // const sellerHandler = () => {
-  //   const token = localStorage.getItem("token");
-  //   if (token) {
-  //      alert("Please Subscribe")
-  //   } else {
-  //     setLoginModalOpen(true);
-  //   }
-  // };
-
 
   const sellerHandler = () => {
     const token = localStorage.getItem("token");
     if (token) {
       if(subscribed){
-        updateLists()
+        updateLists(myAd, user)
       } else {
         handleShow() 
       }
@@ -41,35 +33,29 @@ export default function PropertyDetail(props) {
     }
   };
 
-  function updateLists(){
-    if(myAd && user){
-      if(!myAd.interested.includes(user._id)){
-        fetch(`${process.env.REACT_APP_SERVER_URL}/addinterestedbuyer?id=${myAd._id}` , {
-          method: "POST",
-          headers: tokenHeader(),
-        }).then(res => {
-          alert(`The seller has been send your information`)
-          console.log(res)
-        })
-      } else {
-        alert(`The seller is already been contacted`)
-      }
-    }
+
+  const subscribeHandler = async() =>{
+    //alert(`Opening Payment Panel`)
+    displayRazorpay(myAd, user)
   }
  
 
   useEffect(() => {
     async function getSeller(ad){
-      if(subscribed){
-        const res = await axios.get(
-          process.env.REACT_APP_SERVER_URL + 
-            `/user?id=${ad.author_details.id}`
-        );
-        const seller = res.data.user;
-        //console.log(seller);
-        setSeller(seller)
-      } else {
-        console.log("Please Subscribe")
+      try{
+        if(subscribed){
+          const res = await axios.get(
+            process.env.REACT_APP_SERVER_URL + 
+              `/user?id=${ad.author_details.id}`
+          );
+          const seller = res.data.user;
+          //console.log(seller);
+          setSeller(seller)
+        } else {
+          console.log("Please Subscribe")
+        }
+      } catch(err) {
+        console.log(err)
       }
     }
 
@@ -176,9 +162,7 @@ export default function PropertyDetail(props) {
             <Button variant="secondary" onClick={handleClose}>
               Later
             </Button>
-            <Button variant="primary" onClick={() => {
-              displayRazorpay()
-              }}>
+            <Button variant="primary" onClick={() => subscribeHandler()}>
               Proceed to Pay
             </Button>
           </Modal.Footer>
