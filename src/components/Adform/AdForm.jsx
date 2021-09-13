@@ -12,6 +12,7 @@ export default function AdForm() {
   const [type, setType] = useState("");
   const [desc, setDesc] = useState("");
   const [bhk, setBhk] = useState("");
+  const [carpetArea, setCarpetArea] = useState("");
   const [area, setArea] = useState("");
   const [city, setCity] = useState("");
   const [price, setPrice] = useState("");
@@ -27,6 +28,7 @@ export default function AdForm() {
       setType(location.state.p_type);
       setDesc(location.state.p_desc);
       setBhk(location.state.p_bhk);
+      setCarpetArea(location.state.p_carpet_area);
       setArea(location.state.p_area);
       setCity(location.state.p_city);
       setPrice(location.state.p_price);
@@ -54,6 +56,7 @@ export default function AdForm() {
     setType("");
     setDesc("");
     setBhk("");
+    setCarpetArea("");
     setArea("");
     setCity("");
     setPrice("");
@@ -68,6 +71,7 @@ export default function AdForm() {
         property_type: type,
         description: desc,
         n_bhk: bhk,
+        carpet_area: carpetArea,
       },
       address: {
         city: city,
@@ -103,6 +107,7 @@ export default function AdForm() {
         property_type: type,
         description: desc,
         n_bhk: bhk,
+        carpet_area: carpetArea,
       },
       address: {
         city: city,
@@ -212,6 +217,16 @@ export default function AdForm() {
                       setBhk(e.target.value);
                     }}
                     value={bhk}
+                    required
+                  ></input>
+                  <input
+                    className="mt-2 form-control"
+                    type="number"
+                    placeholder="Carpet area (sqft)"
+                    onChange={(e) => {
+                      setCarpetArea(e.target.value);
+                    }}
+                    value={carpetArea}
                     required
                   ></input>
                 </div>

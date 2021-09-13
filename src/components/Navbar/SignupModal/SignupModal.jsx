@@ -20,9 +20,9 @@ function getModalStyle() {
 }
 
 const useStyles = makeStyles((theme) => ({
-  paper: {
+  signupPaper: {
     position: "absolute",
-    width: 300,
+    width: 650,
     backgroundColor: theme.palette.background.paper,
     borderRadius: "5px",
     boxShadow: theme.shadows[5],
@@ -52,6 +52,14 @@ const SignupModal = (props) => {
   const [Admin, setAdmin] = useState(false);
   const [Image, setImage] = useState(null);
 
+  const [errors, setErrors] = useState({
+    FullNameError: "",
+    EmailError: "",
+    PhoneError: "",
+    PasswordError: "",
+    RePasswordError: "",
+  });
+
   useEffect(() => {
     setFullName("");
     setEmail("");
@@ -60,10 +68,95 @@ const SignupModal = (props) => {
     setRePassword("");
     setAdmin(false);
     setImage(null);
+    setErrors({
+      FullNameError: "",
+      EmailError: "",
+      PhoneError: "",
+      PasswordError: "",
+      RePasswordError: "",
+    });
   }, [signupModalOpen]);
 
+  const ValidateEmail = (mail) => {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+      return true;
+    }
+    return false;
+  };
+
+  const ValidatePassword = (password) => {
+    if (
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/.test(
+        password
+      )
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const ValidatePhone = (phone) => {
+    if (
+      phone[0] == 6 ||
+      phone[0] == 7 ||
+      phone[0] == 8 ||
+      (phone[0] == 9 && /^\d{10}$/.test(phone))
+    ) {
+      return true;
+    }
+    return false;
+  };
+
+  const validateOnce = () => {
+    setErrors({
+      FullNameError: FullName.length == 0 ? "Required" : errors.FullNameError,
+      EmailError: Email.length == 0 ? "Required" : errors.EmailError,
+      PhoneError: Phone.length == 0 ? "Required" : errors.PhoneError,
+      PasswordError: Password.length == 0 ? "Required" : errors.PasswordError,
+      RePasswordError:
+        RePassword.length == 0 ? "Required" : errors.RePasswordError,
+    });
+  };
+
+  const validate = () => {
+    setErrors({
+      FullNameError:
+        0 < FullName.length && FullName.length < 4
+          ? "Name should be at least 4 characters"
+          : "",
+      PhoneError:
+        0 < Phone.length && !ValidatePhone(Phone)
+          ? "Phone no. should be valid"
+          : "",
+      EmailError:
+        0 < Email.length && !ValidateEmail(Email)
+          ? "Email should be valid"
+          : "",
+      PasswordError:
+        0 < Password.length && !ValidatePassword(Password)
+          ? "Password should have 1 upper, 1 lower, 1 numeric and 1 special character"
+          : "",
+      RePasswordError:
+        0 < RePassword.length && RePassword != Password
+          ? "Passwords don't match"
+          : "",
+    });
+  };
+
+  const formValid = () => {
+    return !Object.values(errors)
+      .map((el) => {
+        return Boolean(el);
+      })
+      .includes(true);
+  };
+
+  useEffect(() => {
+    if (FullName || Phone || Email || Password || RePassword) validate();
+  }, [FullName, Phone, Email, Password, RePassword]);
+
   const body = (
-    <div style={modalStyle} className={classes.paper}>
+    <div style={modalStyle} className={classes.signupPaper + " signup-paper"}>
       <h2 id="simple-modal-title">Create a new account</h2>
       <p className="modal-subtitle">Enter your details</p>
       <div id="simple-modal-description">
@@ -78,7 +171,7 @@ const SignupModal = (props) => {
             style={{
               display: "flex",
               flexDirection: "column",
-              paddingRight: "20px",
+              paddingRight: "25px",
             }}
           >
             <div className="input-label">Full name</div>
@@ -86,19 +179,32 @@ const SignupModal = (props) => {
               value={FullName}
               onChange={(e) => setFullName(e.target.value)}
               placeholder="Enter full name..."
+              className={errors.FullNameError ? "error" : ""}
             />
+            {errors.FullNameError ? (
+              <span class="help-block">{errors.FullNameError}</span>
+            ) : null}
+
             <div className="input-label">Email</div>
             <Input
               value={Email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email ID..."
+              className={errors.EmailError ? "error" : ""}
             />
+            {errors.EmailError ? (
+              <span class="help-block">{errors.EmailError}</span>
+            ) : null}
             <div className="input-label">Phone</div>
             <Input
               value={Phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="Enter valid phone number..."
+              className={errors.PhoneError ? "error" : ""}
             />
+            {errors.PhoneError ? (
+              <span class="help-block">{errors.PhoneError}</span>
+            ) : null}
             <div
               style={{
                 display: "flex",
@@ -130,14 +236,22 @@ const SignupModal = (props) => {
               onChange={(e) => setPassword(e.target.value)}
               type="Password"
               placeholder="Enter a Password..."
+              className={errors.PasswordError ? "error" : ""}
             />
+            {errors.PasswordError ? (
+              <span class="help-block">{errors.PasswordError}</span>
+            ) : null}
             <div className="input-label">Confirm Password</div>
             <Input
               value={RePassword}
               onChange={(e) => setRePassword(e.target.value)}
               type="Password"
               placeholder="Retype your Password..."
+              className={errors.RePasswordError ? "error" : ""}
             />
+            {errors.RePasswordError ? (
+              <span class="help-block">{errors.RePasswordError}</span>
+            ) : null}
             <div className="input-label">Profile image</div>
             <ImageInput
               Image={Image}
@@ -157,29 +271,34 @@ const SignupModal = (props) => {
         </Button>
         <Button
           onClick={async () => {
-            let imageURL = defaultPicURL;
-            try {
-              imageURL =
-                Image == null
-                  ? defaultPicURL
-                  : await UploadImage(Image, "profile");
-            } catch (err) {
-              console.log(err);
-              imageURL = defaultPicURL;
+            validate();
+            validateOnce();
+            if (formValid()) {
+              let imageURL = defaultPicURL;
+              try {
+                imageURL =
+                  Image == null
+                    ? defaultPicURL
+                    : await UploadImage(Image, "profile");
+              } catch (err) {
+                console.log(err);
+                imageURL = defaultPicURL;
+              }
+
+              handleSignup(
+                {
+                  fullname: FullName,
+                  email: Email,
+                  mobile: Phone,
+                  password: Password,
+                  role: Admin ? "admin" : "user",
+                  is_subscribed: false,
+                  profile_picture: imageURL,
+                },
+                setLoading,
+                setSignupModalOpen
+              );
             }
-            handleSignup(
-              {
-                fullname: FullName,
-                email: Email,
-                mobile: Phone,
-                password: Password,
-                role: Admin ? "admin" : "user",
-                is_subscribed: false,
-                profile_picture: imageURL,
-              },
-              setLoading,
-              setSignupModalOpen
-            );
           }}
         >
           Create
