@@ -20,7 +20,7 @@ function Contacted({ user }) {
           })
           .then((data) => {
             console.log(data.user.contacted_ads);
-            data.user.contacted_ads.slice(1).map((id) => {
+            data.user.contacted_ads.map((id) => {
               fetch(
                 process.env.REACT_APP_SERVER_URL + "/advertisement?id=" + id
               )
@@ -93,20 +93,21 @@ function Contacted({ user }) {
           <div className="seller-section">
             <div className="seller-header">
               <img
+                className="img-fluid"
                 src={seller.profile_picture}
-                alt={seller.profile_picture}
+                alt="Seller_image"
               ></img>
               <h2>{seller.fullname}</h2>
               <p> {seller.mobile} </p>
             </div>
             <div className="chatbox">
               <div className="chat-text">
-                <p>Im intrested in</p>
+                <p>Im interested in</p>
               </div>
               <div className="chat-property">
                 <h1>{property.property_details.property_title}</h1>
                 <p> {property.quoted_price}</p>
-                <img src="" alt=""></img>
+                <img src={property.image} alt="property image"></img>
               </div>
             </div>
           </div>

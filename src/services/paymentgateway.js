@@ -1,7 +1,7 @@
+import axios from "axios";
 import { tokenHeader } from "./HeaderService";
 
 export default async function displayRazorpay() {
-
     const data = await fetch(process.env.REACT_APP_SERVER_URL + "/razorpay", {
       method: "POST",
     }).then((t) => t.json());
@@ -22,19 +22,22 @@ export default async function displayRazorpay() {
                     method: "POST"
                 }).then((d) => d.json())
                 const paymentData = JSON.parse(captureObj)
-                // const subscriberData = await fetch(process.env.REACT_APP_SERVER_URL + "/subscription", {
-                //     method: "POST",
-                //     body: {
-                //         payment_type: paymentData.method,
-                //         amount: paymentData.amount,
-                //         payment_details: {
-                //             card_number: paymentData.card_id,
-                //             VPA: paymentData.vpa
-                //         }
-                //     },
-                //     headers: tokenHeader()
-                // }).then(resp => resp.json())
-                console.log(paymentData)
+                let structure = {
+                    method: 'post',
+                    headers: tokenHeader(),
+                    url: process.env.REACT_APP_SERVER_URL + "/subscription",
+                    data: {
+                        payment_type: paymentData.method,
+                        amount: paymentData.amount,
+                        payment_details: {
+                                    card_number: paymentData.card_id,
+                                    VPA: paymentData.vpa
+                        }
+                    }
+                }
+                const res = await axios(structure)
+                console.log(res)
+                //window.location.reload()
             }
             catch{
                 alert("PAYMENT FAILED...") 
@@ -45,3 +48,4 @@ export default async function displayRazorpay() {
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
 }
+

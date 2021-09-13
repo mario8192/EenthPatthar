@@ -174,7 +174,7 @@ const SignupModal = (props) => {
                 mobile: Phone,
                 password: Password,
                 role: Admin ? "admin" : "user",
-                is_subscribed: true,
+                is_subscribed: false,
                 profile_picture: imageURL,
               },
               setLoading,

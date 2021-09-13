@@ -15,7 +15,7 @@ function Offers() {
     console.log("showing buyer list");
     setProperty(advert);
     if (advert.interested) {
-      advert.interested.slice(1).filter((buyer_id) => {
+      advert.interested.filter((buyer_id) => {
         fetch(process.env.REACT_APP_SERVER_URL + "/user?id=" + buyer_id)
           .then((res) => {
             return res.json();
@@ -55,7 +55,7 @@ function Offers() {
               key={advert._id}
               onClick={() => showBuyersInterested(advert)}
             >
-              <img src={advert.image} alt={advert.image}></img>
+              <img src={advert.image} alt="Property Image"></img>
               <div className="advert-name">
                 <p>
                   <strong>{advert.property_details.property_title}</strong>
@@ -79,7 +79,7 @@ function Offers() {
               >
                 <img
                   src={buyer.profile_picture}
-                  alt={buyer.profile_picture}
+                  alt="Buyer Image"
                 ></img>
                 <div className="buyer-intro">
                   <p>
@@ -99,7 +99,7 @@ function Offers() {
             <div className="buyer-header">
               <img
                 src={buyer.profile_picture}
-                alt={buyer.profile_picture}
+                alt="Buyer Image"
               ></img>
               <h2>{buyer.fullname}</h2>
               <p>{buyer.mobile}</p>

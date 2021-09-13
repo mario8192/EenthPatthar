@@ -4,6 +4,7 @@ import { useLocation, useHistory } from "react-router-dom";
 import {Button, Modal} from 'react-bootstrap';
 import axios from "axios";
 import displayRazorpay from "../../../services/paymentgateway";
+import { tokenHeader } from "../../../services/HeaderService";
 
 export default function PropertyDetail(props) {
   const { user, setLoginModalOpen } = props;
@@ -15,7 +16,6 @@ export default function PropertyDetail(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [subscribed, setSubscribed] = useState(user && user.is_subscribed)
-
   // const sellerHandler = () => {
   //   const token = localStorage.getItem("token");
   //   if (token) {
@@ -29,7 +29,11 @@ export default function PropertyDetail(props) {
   const sellerHandler = () => {
     const token = localStorage.getItem("token");
     if (token) {
-       handleShow()
+      if(subscribed){
+        updateLists()
+      } else {
+        handleShow() 
+      }
     } else {
       //  alert("Login First");
       console.log("Please Login")
@@ -37,6 +41,21 @@ export default function PropertyDetail(props) {
     }
   };
 
+  function updateLists(){
+    if(myAd && user){
+      if(!myAd.interested.includes(user._id)){
+        fetch(`${process.env.REACT_APP_SERVER_URL}/addinterestedbuyer?id=${myAd._id}` , {
+          method: "POST",
+          headers: tokenHeader(),
+        }).then(res => {
+          alert(`The seller has been send your information`)
+          console.log(res)
+        })
+      } else {
+        alert(`The seller is already been contacted`)
+      }
+    }
+  }
  
 
   useEffect(() => {
@@ -47,7 +66,7 @@ export default function PropertyDetail(props) {
             `/user?id=${ad.author_details.id}`
         );
         const seller = res.data.user;
-        console.log(seller);
+        //console.log(seller);
         setSeller(seller)
       } else {
         console.log("Please Subscribe")
@@ -62,7 +81,7 @@ export default function PropertyDetail(props) {
               `/advertisement?id=${location.state.id}`
           );
           const data = res.data.advertisement;
-          console.log(data);
+          //console.log(data);
           setmyAd(data);
           getSeller(data)
         }
@@ -121,7 +140,7 @@ export default function PropertyDetail(props) {
             <div className="card">
               <div className="card-body">
                 {user ? <div className="col-md-12">
-                  <h3 className="card-title">Seller Inforamation</h3>
+                  <h3 className="card-title">Seller Information</h3>
                   {user.is_subscribed && seller ? <div>
                     <img
                       className="img-fluid rounded"
@@ -157,7 +176,9 @@ export default function PropertyDetail(props) {
             <Button variant="secondary" onClick={handleClose}>
               Later
             </Button>
-            <Button variant="primary" onClick={() => displayRazorpay()}>
+            <Button variant="primary" onClick={() => {
+              displayRazorpay()
+              }}>
               Proceed to Pay
             </Button>
           </Modal.Footer>
