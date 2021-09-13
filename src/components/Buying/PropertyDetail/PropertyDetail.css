@@ -5,6 +5,19 @@
 }
 
 .banner .card {
-    width: 350px;
-    height: auto;
+  width: 350px;
+  height: auto;
+}
+
+.property-price {
+  font-weight: bold;
+  width: max-content;
+}
+.contact-seller-button {
+  width: max-content;
+}
+.property-detail-right-container {
+  flex: unset;
+  width: max-content;
+  margin-left: auto;
 }

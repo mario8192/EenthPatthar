@@ -38,7 +38,7 @@ function AdminUserCard({ user, setUserViewModalOpen, setCurrentId }) {
 
   return (
     <div
-      className="admin-user-card mt-3"
+      className="admin-user-card mt-3 glow"
       onClick={(e) => viewUser(e, user._id)}
     >
       <img src={user.profile_picture} alt="profile_picture"></img>

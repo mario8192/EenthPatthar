@@ -21,6 +21,11 @@ function App() {
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [signupModalOpen, setSignupModalOpen] = useState(false);
 
+  // subscribe banner controls
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   useEffect(() => {
     if (localStorage.getItem("token")) {
       const data = axios({
@@ -36,8 +41,6 @@ function App() {
         });
     } else setUser(null);
   }, []);
-
-  
 
   const loadScript = (src) => {
     return new Promise((resolve) => {
@@ -71,10 +74,21 @@ function App() {
         <Loader isLoading={isLoading} />
         <Switch>
           <Route exact path="/">
-            <PropertyList />
+            <PropertyList
+              user={user}
+              show={show}
+              handleClose={handleClose}
+              handleShow={handleShow}
+            />
           </Route>
           <Route exact path="/ad">
-            <PropertyDetail user={user} setLoginModalOpen={setLoginModalOpen} />
+            <PropertyDetail
+              user={user}
+              setLoginModalOpen={setLoginModalOpen}
+              show={show}
+              handleClose={handleClose}
+              handleShow={handleShow}
+            />
           </Route>
           {user && (
             <Route path="/admin_main">

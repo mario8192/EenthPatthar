@@ -55,7 +55,7 @@ function AdminPropertyCard({ prop }) {
   };
 
   return (
-    <div className="property-card">
+    <div className="property-card glow">
       <div className="property-image">
         <img src={property.image} alt="property_image"></img>
       </div>

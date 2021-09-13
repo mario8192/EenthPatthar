@@ -6,7 +6,7 @@
   width: 100px;
 }
 
-.property-card {
+.admin-property-panel .property-card {
   background-color: white;
   display: flex;
   align-items: center;

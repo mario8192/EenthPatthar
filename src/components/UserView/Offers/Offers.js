@@ -71,24 +71,24 @@ function Offers() {
         <h2 className="column-heading">Buyer List</h2>
         <div className="buyer-list">
           {buyers &&
-            buyers.map((buyer) => (
-              <div
-                className="buyer-item"
-                key={buyer._id}
-                onClick={() => showBuyerChat(buyer)}
-              >
-                <img
-                  src={buyer.profile_picture}
-                  alt="Buyer Image"
-                ></img>
-                <div className="buyer-intro">
-                  <p>
-                    <strong>{buyer.fullname}</strong>
-                  </p>
-                  <p>{buyer.mobile}</p>
-                </div>
-              </div>
-            ))}
+            buyers.map(
+              (buyer) =>
+                buyer && (
+                  <div
+                    className="buyer-item"
+                    key={buyer._id}
+                    onClick={() => showBuyerChat(buyer)}
+                  >
+                    <img src={buyer.profile_picture} alt="Buyer Image"></img>
+                    <div className="buyer-intro">
+                      <p>
+                        <strong>{buyer.fullname}</strong>
+                      </p>
+                      <p>{buyer.mobile}</p>
+                    </div>
+                  </div>
+                )
+            )}
         </div>
       </div>
 
@@ -97,10 +97,7 @@ function Offers() {
           <h2 className="column-heading">Buyer Chat</h2>
           <div className="buyer-section">
             <div className="buyer-header">
-              <img
-                src={buyer.profile_picture}
-                alt="Buyer Image"
-              ></img>
+              <img src={buyer.profile_picture} alt="Buyer Image"></img>
               <h2>{buyer.fullname}</h2>
               <p>{buyer.mobile}</p>
             </div>
@@ -112,7 +109,7 @@ function Offers() {
                 <div className="chat-property">
                   <h1>{property.property_details.property_title}</h1>
                   <p> {property.quoted_price}</p>
-                  <img src="" alt=""></img>
+                  <img src={property.image} alt=""></img>
                 </div>
               </div>
             </div>

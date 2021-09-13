@@ -60,6 +60,9 @@
 
 .buyer-item img {
   padding: 12px;
+  height: 82px;
+  width: 82px;
+  border-radius: 50%;
 }
 
 .buyer-intro {
@@ -98,6 +101,8 @@ h2.column-heading {
 }
 
 .buyer-header img {
+  height: 90px;
+  width: 90px;
   border-radius: 50%;
 }
 
