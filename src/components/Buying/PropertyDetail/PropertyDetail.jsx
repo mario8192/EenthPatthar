@@ -64,19 +64,28 @@ export default function PropertyDetail({
         alert(`The seller has already been contacted`);
       }
     }
+
+  const subscribeHandler = async() =>{
+    //alert(`Opening Payment Panel`)
+    displayRazorpay(myAd, user)
   }
 
   useEffect(() => {
     async function getSeller(ad) {
-      if (subscribed) {
-        const res = await axios.get(
-          process.env.REACT_APP_SERVER_URL + `/user?id=${ad.author_details.id}`
-        );
-        const seller = res.data.user;
-        //console.log(seller);
-        setSeller(seller);
-      } else {
-        console.log("Get subscribed to contact sellers directly");
+      try{
+        if (subscribed) {
+          const res = await axios.get(
+            process.env.REACT_APP_SERVER_URL + `/user?id=${ad.author_details.id}`
+          );
+          const seller = res.data.user;
+          //console.log(seller);
+          setSeller(seller);
+        }
+      
+       else {
+        console.log("Get subscribed to contact sellers directly");}
+      }catch(err) {
+          console.log(err)
       }
     }
 

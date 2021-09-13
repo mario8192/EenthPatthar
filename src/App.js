@@ -42,6 +42,7 @@ function App() {
     } else setUser(null);
   }, []);
 
+  // Razor Pay Script
   const loadScript = (src) => {
     return new Promise((resolve) => {
       const script = document.createElement("script");

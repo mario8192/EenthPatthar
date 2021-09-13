@@ -1,11 +1,13 @@
 import axios from "axios";
 import { tokenHeader } from "./HeaderService";
+import updateLists from "./updateLists";
 
-export default async function displayRazorpay() {
+export default async function displayRazorpay(ad, user) {
+  console.log("displayRazorpay has been started");
   const data = await fetch(process.env.REACT_APP_SERVER_URL + "/razorpay", {
     method: "POST",
   }).then((t) => t.json());
-  console.log();
+
   const options = {
     key: process.env.REACT_APP_RAZORPAY_KEY_ID_TEST,
     currency: data.currency,
@@ -40,6 +42,7 @@ export default async function displayRazorpay() {
         };
         const res = await axios(structure);
         console.log(res);
+        updateLists(ad, user);
         window.location.reload();
       } catch {
         alert("PAYMENT FAILED...");
@@ -49,4 +52,5 @@ export default async function displayRazorpay() {
 
   const paymentObject = new window.Razorpay(options);
   paymentObject.open();
+  console.log("displayRazorpay has been ended");
 }
