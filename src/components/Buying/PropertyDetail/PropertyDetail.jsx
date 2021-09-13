@@ -64,28 +64,28 @@ export default function PropertyDetail({
         alert(`The seller has already been contacted`);
       }
     }
-
-  const subscribeHandler = async() =>{
-    //alert(`Opening Payment Panel`)
-    displayRazorpay(myAd, user)
   }
+  // const subscribeHandler = async () => {
+  //   //alert(`Opening Payment Panel`)
+  //   displayRazorpay(myAd, user);
+  // };
 
   useEffect(() => {
     async function getSeller(ad) {
-      try{
+      try {
         if (subscribed) {
           const res = await axios.get(
-            process.env.REACT_APP_SERVER_URL + `/user?id=${ad.author_details.id}`
+            process.env.REACT_APP_SERVER_URL +
+              `/user?id=${ad.author_details.id}`
           );
           const seller = res.data.user;
           //console.log(seller);
           setSeller(seller);
+        } else {
+          console.log("Get subscribed to contact sellers directly");
         }
-      
-       else {
-        console.log("Get subscribed to contact sellers directly");}
-      }catch(err) {
-          console.log(err)
+      } catch (err) {
+        console.log(err);
       }
     }
 
@@ -158,90 +158,8 @@ export default function PropertyDetail({
             handleShow={handleShow}
             show={show}
           ></Banner>
-
-          {/* <div className="banner">
-            <div className="card">
-              <div className="card-body">
-                {user ? (
-                  <div className="col-md-12">
-                    <h3 className="card-title">Seller Info</h3>
-                    {user.is_subscribed && seller ? (
-                      <div>
-                        <img
-                          className="img-fluid rounded"
-                          src={seller.profile_picture}
-                          alt="seller_image"
-                        />
-                        <h4 className="card-title">{seller.fullname}</h4>
-                        <div className="card-subtitle">
-                          Email: {seller.email}
-                        </div>
-                        <div className="card-subtitle">
-                          Mobile: {seller.mobile}
-                        </div>
-                      </div>
-                    ) : (
-                      <div>
-                        <h5 className="card-title">
-                          Buy subscription now to contact seller directly
-                        </h5>
-                        <button
-                          className="btn btn-outline-primary"
-                          onClick={handleShow}
-                        >
-                          Subscribe
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <div className="col-md-12">
-                    <h5 className="card-title">Login to access all features</h5>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div> */}
         </div>
       )}
-
-      {/* {user && (
-        <Modal show={show} onHide={handleClose}>
-          {!subscribed ? (
-            <Fragment>
-              <Modal.Header closeButton>
-                <Modal.Title>Subscribe Now</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>Buy subscription to contact seller..</Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                  Later
-                </Button>
-                <Button
-                  variant="primary"
-                  onClick={() => {
-                    displayRazorpay();
-                  }}
-                >
-                  Proceed to Pay
-                </Button>
-              </Modal.Footer>
-            </Fragment>
-          ) : (
-            <Fragment>
-              <Modal.Header closeButton>
-                <Modal.Title>Already Subscribed</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>{user.fullname} is already subscribed</Modal.Body>
-              <Modal.Footer>
-                <Button variant="secondary" onClick={handleClose}>
-                  Cancel
-                </Button>
-              </Modal.Footer>
-            </Fragment>
-          )}
-        </Modal>
-      )} */}
     </div>
   );
 }
