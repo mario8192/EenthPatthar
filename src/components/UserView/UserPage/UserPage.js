@@ -1,5 +1,4 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 import useFetch from "../../../services/useFetch";
 import "./UserPage.css";
@@ -10,7 +9,7 @@ function UserPage() {
     process.env.REACT_APP_SERVER_URL + "/user?id=" + location.state.id
   );
   const user = data ? data.user : null;
-  console.log(user);
+  // console.log(user);
   return (
     <div className="container mt-5 admin-user-container">
       {user && (

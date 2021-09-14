@@ -7,7 +7,7 @@ function Contacted({ user }) {
   const [adverts, setAdverts] = useState([]);
   const [property, setProperty] = useState(null);
   const [seller, setSeller] = useState(null);
-  console.log(user);
+  // console.log(user);
 
   useEffect(() => {
     try {

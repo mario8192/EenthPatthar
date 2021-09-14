@@ -3,10 +3,10 @@ import handleLogin from "./LoginService";
 
 const handleSignup = (data, setLoading, setSignupModalOpen) => {
   console.log("signing up");
+
   //signup logic goes here
   console.log(data);
   setLoading(true);
-  let res;
   axios
     .post(process.env.REACT_APP_SERVER_URL + "/register", data)
     .then((res) => {

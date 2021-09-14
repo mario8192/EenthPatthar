@@ -1,5 +1,4 @@
 import FirebaseInstance from "../FirebaseConfig";
-import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/storage";
 import { v4 as uuidv4 } from "uuid";

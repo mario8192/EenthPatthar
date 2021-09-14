@@ -37,11 +37,7 @@ function Offers() {
       }
     }
     func();
-  }, [property]);
-
-  useEffect(() => {
-    console.log(buyers);
-  }, buyers);
+  }, [property, buyers]);
 
   const showBuyersInterested = async (advert) => {
     console.log("showing buyer list");

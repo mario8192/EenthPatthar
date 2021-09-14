@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import LoginModal from "./LoginModal/LoginModal";
 import SignupModal from "./SignupModal/SignupModal";
-import profilePlaceholder from "./profile-placeholder.png";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logout from "../../services/LogoutService";
