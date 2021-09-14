@@ -104,13 +104,13 @@ export default function MyProfileCard(props) {
           <div className="col-md-4">
             {user && (
               <div
-                className="card"
+                className="card my_profile_card"
                 style={{ width: "18rem", height: "auto", textAlign: "center" }}
               >
                 <div className="card-body">
                   <h5 className="card-title">My Profile</h5>
                   <div className="card-subtitle">
-                    <div className="adjust_image my_profile_card">
+                    <div>
                       <img
                         className="img-fluid rounded"
                         src={user.profile_picture}

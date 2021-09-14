@@ -63,37 +63,47 @@ function Offers() {
   };
 
   return (
-    <div className="offers">
+    <div className="offers fadein">
       {adverts && (
         <div className="advert-list">
-          <h2 className="column-heading">My Advertisements</h2>
-          {adverts.advertisements.map((advert) => (
-            <div
-              className="advert-item hoverfill"
-              key={advert._id}
-              onClick={() => showBuyersInterested(advert)}
-            >
-              <img src={advert.image} alt="Property Image"></img>
-              <div className="advert-name">
-                <p>
-                  <strong>{advert.property_details.property_title}</strong>
-                </p>
-                <p>{advert.address.city}</p>
+          <h4 className="column-heading pl-3 pt-2 pb-2 mb-0">
+            My Advertisements
+          </h4>
+          {adverts.length > 0 ? (
+            adverts.advertisements.map((advert) => (
+              <div
+                className="advert-item hoverfill fadein"
+                key={advert._id}
+                onClick={() => showBuyersInterested(advert)}
+              >
+                <img src={advert.image} alt="Property Image"></img>
+                <div className="advert-name">
+                  <p>
+                    <strong>{advert.property_details.property_title}</strong>
+                  </p>
+                  <p>{advert.address.city}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          ) : (
+            <React.Fragment>
+              <div style={{ height: "200px" }}></div>
+              <div className="empty-list-msg">No offers yet </div>
+            </React.Fragment>
+          )}
         </div>
       )}
 
-      <div className="interested-users">
-        <h2 className="column-heading">Buyer List</h2>
+      <div className="interested-users fadein">
+        <h4 className="column-heading pl-3 pt-2 pb-2 mb-0">Buyer List</h4>
         <div className="buyer-list">
-          {buyers &&
+          {property && property.interested ? (
+            buyers &&
             buyers.map(
               (buyer) =>
                 buyer && (
                   <div
-                    className="buyer-item hoverfill"
+                    className="buyer-item hoverfill fadein"
                     key={buyer._id}
                     onClick={() => showBuyerChat(buyer)}
                   >
@@ -106,14 +116,20 @@ function Offers() {
                     </div>
                   </div>
                 )
-            )}
+            )
+          ) : (
+            <React.Fragment>
+              <div style={{ height: "200px" }}></div>
+              <div className="empty-list-msg">No buyers yet </div>
+            </React.Fragment>
+          )}
         </div>
       </div>
 
-      {buyer && (
-        <div className="buyer-contact">
-          <h2 className="column-heading">Buyer Chat</h2>
-          <div className="buyer-section">
+      {buyer && property.interested ? (
+        <div className="buyer-contact ">
+          <h2 className="column-heading">Chat with Buyer </h2>
+          <div className="buyer-section fadein">
             <div className="buyer-header">
               <img src={buyer.profile_picture} alt="Buyer Image"></img>
               <h2>{buyer.fullname}</h2>
@@ -122,7 +138,7 @@ function Offers() {
             <div className="buyer-chat">
               <div className="chatbox">
                 <div className="chat-text">
-                  <p>Buyer was interested in</p>
+                  <p>I'm interested in</p>
                 </div>
                 <div className="chat-property">
                   <h1>{property.property_details.property_title}</h1>
@@ -133,7 +149,7 @@ function Offers() {
             </div>
           </div>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

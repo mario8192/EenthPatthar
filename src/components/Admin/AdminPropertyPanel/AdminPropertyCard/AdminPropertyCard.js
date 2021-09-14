@@ -56,31 +56,36 @@ function AdminPropertyCard({ prop }) {
 
   return (
     <div className="property-card glow">
-      <div className="property-image">
-        <img src={property.image} alt="property_image"></img>
-      </div>
-      <div className="property_details">
-        <h2>{property.property_details.property_title}</h2>
-        <p>
-          {" "}
-          <ImLocation2 />
-          {property.address.city}
-        </p>
-      </div>
-      <div className="property-posting-details">
-        <p>
-          <strong>Posted On:</strong>
-          <br />
-          {property.updatedAt.slice(0, 10)}
-        </p>
-        <p>
-          <strong>Posted By:</strong>
-          <br />
-          {property.author_details.fullname}
-        </p>
+      <div
+        className="property-card-clickable"
+        onClick={(e) => viewProperty(e, property._id)}
+      >
+        <div className="property-image">
+          <img src={property.image} alt="property_image"></img>
+        </div>
+        <div className="property_details">
+          <h2>{property.property_details.property_title}</h2>
+          <p>
+            {" "}
+            <ImLocation2 />
+            {property.address.city}
+          </p>
+        </div>
+        <div className="property-posting-details">
+          <p>
+            <strong>Posted On:</strong>
+            <br />
+            {property.updatedAt.slice(0, 10)}
+          </p>
+          <p>
+            <strong>Posted By:</strong>
+            <br />
+            {property.author_details.fullname}
+          </p>
+        </div>
       </div>
       <div className="property-admin-controls">
-        <AiFillEye onClick={(e) => viewProperty(e, property._id)} />
+        {/* <AiFillEye onClick={(e) => viewProperty(e, property._id)} /> */}
         {isApproved ? (
           <RiCheckboxCircleFill onClick={() => approvalHandler(property)} />
         ) : (

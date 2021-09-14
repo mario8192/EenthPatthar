@@ -6,7 +6,7 @@ import ImageInput from "../Navbar/SignupModal/ImageInput/ImageInput";
 import UploadImage from "../../services/ImageUploadService";
 import "./AdForm.css";
 
-export default function AdForm() {
+export default function AdForm({ setLoading }) {
   const [id, setId] = useState(null);
   const [title, setTitle] = useState("");
   const [type, setType] = useState("");
@@ -65,6 +65,7 @@ export default function AdForm() {
 
   const createAd = async (e) => {
     e.preventDefault();
+    setLoading(true);
     let reqData = {
       property_details: {
         property_title: title,
@@ -91,15 +92,18 @@ export default function AdForm() {
       console.log(res);
       alert("Advertisement Published");
       clearInputs();
+      setLoading(false);
       history.push("/myprofile");
     } catch (err) {
+      setLoading(false);
       alert(err.message);
     }
   };
 
   const updateAd = async (e) => {
     e.preventDefault();
-    console.log(typeof Image == typeof "");
+    setLoading(true);
+
     let reqData = {
       _id: id,
       property_details: {
@@ -125,12 +129,15 @@ export default function AdForm() {
     };
     try {
       console.log(structure);
+
       const res = await axios(structure);
       console.log(res);
       alert("Advertisement Updated!");
       clearInputs();
+      setLoading(false);
       history.push("/myprofile");
     } catch (err) {
+      setLoading(false);
       alert(err);
     }
   };

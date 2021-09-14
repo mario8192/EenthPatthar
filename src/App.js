@@ -123,7 +123,7 @@ function App() {
             <MyProfileCard user={user}></MyProfileCard>
           </Route>
           <Route path="/adform">
-            <AdForm></AdForm>
+            <AdForm setLoading={setLoading}></AdForm>
           </Route>
         </Switch>
 

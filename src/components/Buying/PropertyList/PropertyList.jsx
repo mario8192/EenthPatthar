@@ -101,7 +101,7 @@ export default function PropertyList({ user, show, handleClose, handleShow }) {
                             style={{ textDecoration: "none", color: "black" }}
                           >
                             <div className="row">
-                              <div className="col-md-4">
+                              <div className="col-md-4 pr-0">
                                 <div className="adjust_image">
                                   <img
                                     className="img-fluid"
@@ -132,7 +132,7 @@ export default function PropertyList({ user, show, handleClose, handleShow }) {
                                     {ourAds.area}, {ourAds.city}
                                   </div>
                                   <div className="card-text">{ourAds.desc}</div>
-                                  <div className="row">
+                                  <div className="row ml-0">
                                     <button
                                       type="button"
                                       className="btn btn-outline-primary mt-2 mr-2"

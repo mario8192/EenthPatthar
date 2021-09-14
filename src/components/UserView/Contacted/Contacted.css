@@ -2,11 +2,22 @@
   display: flex;
   width: 100%;
   height: 100%;
+  border: 2px solid rgba(77, 77, 77, 0.281);
+  border-top: none;
+  box-shadow: 0 0 50px -10px rgba(57, 82, 114, 0.548);
+  background-color: #f8f8f8;
+}
+
+.contacted .column-heading {
+  background-color: #fafafa;
+  box-shadow: 0 0 3px rgba(57, 82, 114, 0.548);
 }
 
 .advert-list {
+  height: 92vh;
+  border-right: 2px solid rgba(77, 77, 77, 0.281);
+  border-top: none;
   width: 25%;
-  border-right: 2px solid grey;
 }
 
 .seller-info {

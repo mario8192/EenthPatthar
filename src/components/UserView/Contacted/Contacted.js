@@ -59,15 +59,17 @@ function Contacted({ user }) {
   };
 
   return (
-    <div className="contacted">
+    <div className="contacted fadein">
       {adverts && (
         <div className="advert-list">
-          <h2 className="column-heading">Contacted Properties</h2>
+          <h4 className="column-heading pl-3 pt-2 pb-2 mb-0">
+            You have contacted
+          </h4>
           {adverts.map((advert) => {
             return (
               advert && (
                 <div
-                  className="advert-item hoverfill"
+                  className="advert-item hoverfill fadein"
                   key={advert._id}
                   onClick={() => showSellerChat(advert)}
                 >
@@ -86,11 +88,14 @@ function Contacted({ user }) {
       )}
 
       {property == null ? (
-        <div></div>
+        <React.Fragment>
+          <div style={{ height: "200px" }}></div>
+          <div className="empty-list-msg">Select a property to continue </div>
+        </React.Fragment>
       ) : (
-        <div className="seller-info">
-          <h2 className="column-heading">Seller Chat</h2>
-          <div className="seller-section">
+        <div className="seller-info ">
+          <h2 className="column-heading">Chat with Seller </h2>
+          <div className="seller-section fadein">
             <div className="seller-header">
               <img
                 className="img-fluid"
@@ -102,7 +107,7 @@ function Contacted({ user }) {
             </div>
             <div className="chatbox">
               <div className="chat-text">
-                <p>Im interested in</p>
+                <p>I'm interested in</p>
               </div>
               <div className="chat-property">
                 <h1>{property.property_details.property_title}</h1>

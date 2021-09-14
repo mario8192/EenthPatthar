@@ -5,9 +5,14 @@
   height: 100%;
 }
 
-.adjust_image .img-fluid {
+.my_profile_card .img-fluid {
   height: 100%;
   object-fit: cover;
+  padding: 10px 0px;
+}
+
+.my_profile_card .card-text p {
+  margin-bottom: 2px;
 }
 
 .col-buttons {
@@ -19,6 +24,7 @@
   max-width: 230px;
   height: 230px;
   object-fit: cover;
+  border-radius: 50% !important;
 }
 
 .empty-list-msg {

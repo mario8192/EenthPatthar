@@ -2,13 +2,22 @@
   width: 100%;
   height: 100%;
   display: flex;
+  border: 2px solid rgba(77, 77, 77, 0.281);
+  border-top: none;
+  box-shadow: 0 0 50px -10px rgba(57, 82, 114, 0.548);
+  background-color: #f8f8f8;
 }
 
-.advert-list {
+.offers .column-heading {
+  background-color: #fafafa;
+  box-shadow: 0 0 3px rgba(57, 82, 114, 0.548);
+}
+
+/* .advert-list {
   width: 25%;
   height: 1px;
   border-right: 1px solid gray;
-}
+} */
 
 .advert-name {
   text-align: left;
@@ -22,7 +31,7 @@
 
 .interested-users {
   width: 25%;
-  height: 100%;
+  border-right: 2px solid rgba(77, 77, 77, 0.281);
 }
 
 .buyer-contact {
@@ -34,6 +43,9 @@
 .buyer-section {
   padding: 15px;
 }
+/* .buyer-list {
+  height: 100%;
+} */
 
 .advert-item {
   display: flex;

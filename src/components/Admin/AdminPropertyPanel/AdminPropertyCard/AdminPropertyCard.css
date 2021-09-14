@@ -1,5 +1,5 @@
-.property_details {
-  width: 200px;
+.admin-property-panel .property_details {
+  width: 350px;
 }
 
 .property-posting-details {
@@ -16,6 +16,13 @@
   border-radius: 5px;
   margin-bottom: 30px;
 }
+.admin-property-panel .property-card-clickable {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 75%;
+}
+
 .property-image {
   margin: 10px;
   width: 200px !important;

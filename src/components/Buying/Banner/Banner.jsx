@@ -38,10 +38,10 @@ const Banner = ({ user, show, handleClose, handleShow, seller }) => {
         />
         <h4 className="card-title">{seller && seller.fullname}</h4>
         <div style={{ height: "10px" }} />
-        <div className="card-subtitle">
+        <div className="card-subtitle mt-1">
           Email <div className="seller-values">: {seller && seller.email}</div>
         </div>
-        <div className="card-subtitle">
+        <div className="card-subtitle mt-1">
           Mobile{" "}
           <div className="seller-values">: {seller && seller.mobile}</div>
         </div>
